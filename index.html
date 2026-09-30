@@ -1,0 +1,3807 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>90-Day DSA Sprint Tracker | TCS • Infosys • HashedIn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      /* Dark Theme (Default) */
+      --bg-main: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #334155;
+      --bg-secondary: #0f172a;
+      --border-color: #334155;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-inverse: #0f172a;
+      
+      --accent-primary: #38bdf8;
+      --accent-primary-hover: #0284c7;
+      --accent-success: #22c55e;
+      --accent-success-bg: rgba(34, 197, 94, 0.15);
+      --accent-warning: #f59e0b;
+      --accent-warning-bg: rgba(245, 158, 11, 0.15);
+      --accent-danger: #ef4444;
+      --accent-danger-bg: rgba(239, 68, 68, 0.15);
+      --accent-star: #eab308;
+      
+      --easy-color: #4ade80;
+      --easy-bg: rgba(74, 222, 128, 0.15);
+      --medium-color: #fbbf24;
+      --medium-bg: rgba(251, 191, 36, 0.15);
+      --hard-color: #f87171;
+      --hard-bg: rgba(248, 113, 113, 0.15);
+
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+      --modal-bg: rgba(15, 23, 42, 0.85);
+    }
+
+    [data-theme="light"] {
+      --bg-main: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --bg-secondary: #f1f5f9;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --text-inverse: #ffffff;
+      
+      --accent-primary: #0284c7;
+      --accent-primary-hover: #0369a1;
+      --accent-success: #16a34a;
+      --accent-success-bg: rgba(22, 163, 74, 0.1);
+      --accent-warning: #d97706;
+      --accent-warning-bg: rgba(217, 119, 6, 0.1);
+      --accent-danger: #dc2626;
+      --accent-danger-bg: rgba(220, 38, 38, 0.1);
+      
+      --easy-color: #16a34a;
+      --easy-bg: #dcfce7;
+      --medium-color: #d97706;
+      --medium-bg: #fef3c7;
+      --hard-color: #dc2626;
+      --hard-bg: #fee2e2;
+
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --modal-bg: rgba(255, 255, 255, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.5;
+      padding-bottom: 60px;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 24px;
+    }
+
+    .brand h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .header-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      font-family: var(--font-sans);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent-primary);
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: #0f172a;
+      border-color: var(--accent-primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-primary-hover);
+      color: #ffffff;
+    }
+
+    .btn-danger {
+      background: var(--accent-danger-bg);
+      color: var(--accent-danger);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-danger:hover {
+      background: var(--accent-danger);
+      color: #ffffff;
+    }
+
+    .btn-sm {
+      padding: 4px 10px;
+      font-size: 0.775rem;
+      border-radius: 6px;
+    }
+
+    /* Dashboard Grid */
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .stat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .stat-value small {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .progress-bar-outer {
+      width: 100%;
+      height: 8px;
+      background: var(--bg-secondary);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+
+    .difficulty-pills {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .diff-pill {
+      flex: 1;
+      padding: 6px 8px;
+      border-radius: 8px;
+      font-size: 0.775rem;
+      font-weight: 600;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .diff-pill.easy { background: var(--easy-bg); color: var(--easy-color); }
+    .diff-pill.medium { background: var(--medium-bg); color: var(--medium-color); }
+    .diff-pill.hard { background: var(--hard-bg); color: var(--hard-color); }
+
+    /* Filters Bar */
+    .filters-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px 20px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .search-input, .select-input {
+      padding: 8px 12px;
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-main);
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input {
+      min-width: 240px;
+    }
+
+    .search-input:focus, .select-input:focus {
+      border-color: var(--accent-primary);
+    }
+
+    /* Day Cards List */
+    .days-list {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .day-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .day-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .day-card.day-completed {
+      border-left: 5px solid var(--accent-success);
+    }
+
+    .day-card.today-highlight {
+      border: 2px solid var(--accent-primary);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+
+    .day-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .day-title-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .day-badge {
+      background: var(--accent-primary);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 0.875rem;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+    }
+
+    .day-topic {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .revision-tag {
+      background: var(--accent-warning-bg);
+      color: var(--accent-warning);
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .day-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .status-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .status-badge.complete {
+      background: var(--accent-success-bg);
+      color: var(--accent-success);
+    }
+
+    .status-badge.pending {
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+    }
+
+    /* Questions List Inside Day */
+    .questions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .question-row {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      transition: background-color 0.2s ease;
+    }
+
+    .question-row.solved {
+      background: rgba(34, 197, 94, 0.04);
+      border-color: rgba(34, 197, 94, 0.2);
+    }
+
+    .question-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .question-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 280px;
+    }
+
+    /* Custom Checkbox */
+    .custom-checkbox {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      border: 2px solid var(--border-color);
+      background: var(--bg-card);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .custom-checkbox.checked {
+      background: var(--accent-success);
+      border-color: var(--accent-success);
+      color: #ffffff;
+    }
+
+    .star-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: transform 0.2s ease, color 0.2s ease;
+      padding: 2px;
+    }
+
+    .star-btn:hover {
+      transform: scale(1.2);
+    }
+
+    .star-btn.starred {
+      color: var(--accent-star);
+    }
+
+    .question-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      flex: 1;
+    }
+
+    .question-row.solved .question-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .question-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Badges */
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-easy { background: var(--easy-bg); color: var(--easy-color); }
+    .badge-medium { background: var(--medium-bg); color: var(--medium-color); }
+    .badge-hard { background: var(--hard-bg); color: var(--hard-color); }
+
+    .badge-platform {
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      text-transform: none;
+    }
+
+    /* Notes Area */
+    .notes-container {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-color);
+      display: none;
+    }
+
+    .notes-container.active {
+      display: block;
+    }
+
+    .notes-textarea {
+      width: 100%;
+      min-height: 60px;
+      padding: 8px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      outline: none;
+      resize: vertical;
+    }
+
+    .notes-textarea:focus {
+      border-color: var(--accent-primary);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--modal-bg);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 480px;
+      width: 90%;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .modal-body {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 40px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-color);
+      border-radius: 14px;
+      color: var(--text-muted);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .header-controls {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .brand h1 {
+        font-size: 1.3rem;
+      }
+
+      .filter-group {
+        width: 100%;
+      }
+
+      .search-input {
+        width: 100%;
+      }
+
+      .question-right {
+        width: 100%;
+        justify-content: flex-end;
+        margin-top: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <h1>🚀 90-Day DSA Sprint Tracker</h1>
+      <p>Target: TCS (NQT / Digital / Prime) • Infosys (InfyTQ / Specialist) • HashedIn</p>
+    </div>
+    <div class="header-controls">
+      <button class="btn" id="themeToggleBtn" onclick="toggleTheme()">🌙 Dark Mode</button>
+      <button class="btn" onclick="openStartDateModal()">📅 Set Start Date</button>
+      <button class="btn btn-primary" onclick="jumpToToday()">🎯 Jump to Today</button>
+      <button class="btn" onclick="exportJSON()">📥 Export</button>
+      <button class="btn" onclick="triggerImport()">📤 Import</button>
+      <input type="file" id="importFileInput" style="display:none" onchange="importJSON(event)" accept=".json">
+      <button class="btn btn-danger" onclick="confirmReset()">🔄 Reset</button>
+    </div>
+  </header>
+
+  <!-- Dashboard Overview -->
+  <div class="dashboard-grid">
+    <!-- Stat 1: Overall Progress -->
+    <div class="stat-card">
+      <div class="stat-header">
+        <span>OVERALL PROGRESS</span>
+        <span id="overallPercent">0%</span>
+      </div>
+      <div class="stat-value">
+        <span id="solvedCount">0</span> <small>/ 270 Solved</small>
+      </div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="overallProgressBar" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Stat 2: Days Completed -->
+    <div class="stat-card">
+      <div class="stat-header">
+        <span>DAYS COMPLETED</span>
+        <span>Target: 90 Days</span>
+      </div>
+      <div class="stat-value">
+        <span id="completedDaysCount">0</span> <small>/ 90 Days</small>
+      </div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="daysProgressBar" style="width: 0%; background: linear-gradient(90deg, #818cf8, #38bdf8);"></div>
+      </div>
+    </div>
+
+    <!-- Stat 3: Streaks -->
+    <div class="stat-card">
+      <div class="stat-header">
+        <span>SPRINT STREAK</span>
+        <span>Consistency</span>
+      </div>
+      <div class="stat-value" style="gap: 16px;">
+        <div>🔥 <span id="currentStreak">0</span> <small>Current</small></div>
+        <div>⚡ <span id="bestStreak">0</span> <small>Best</small></div>
+      </div>
+      <div style="font-size: 0.775rem; color: var(--text-muted); margin-top: 8px;" id="sprintDayStatus">
+        Start date not set (click 'Set Start Date')
+      </div>
+    </div>
+
+    <!-- Stat 4: Difficulty Breakdown -->
+    <div class="stat-card">
+      <div class="stat-header">
+        <span>DIFFICULTY SOLVED</span>
+        <span id="revisitCount">⭐ 0 Revisit</span>
+      </div>
+      <div class="difficulty-pills">
+        <div class="diff-pill easy">
+          <span>EASY</span>
+          <strong id="easySolvedCount">0 / 113</strong>
+        </div>
+        <div class="diff-pill medium">
+          <span>MEDIUM</span>
+          <strong id="mediumSolvedCount">0 / 132</strong>
+        </div>
+        <div class="diff-pill hard">
+          <span>HARD</span>
+          <strong id="hardSolvedCount">0 / 25</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters & Search Bar -->
+  <div class="filters-bar">
+    <div class="filter-group">
+      <input type="text" id="searchInput" class="search-input" placeholder="🔍 Search title, topic, notes..." oninput="renderDays()">
+      
+      <select id="difficultyFilter" class="select-input" onchange="renderDays()">
+        <option value="ALL">All Difficulties</option>
+        <option value="Easy">🟢 Easy</option>
+        <option value="Medium">🟠 Medium</option>
+        <option value="Hard">🔴 Hard</option>
+      </select>
+
+      <select id="statusFilter" class="select-input" onchange="renderDays()">
+        <option value="ALL">All Status</option>
+        <option value="PENDING">⏳ Pending</option>
+        <option value="DONE">✅ Completed</option>
+        <option value="REVISIT">⭐ Starred (Revisit)</option>
+      </select>
+
+      <select id="topicFilter" class="select-input" onchange="renderDays()">
+        <option value="ALL">All Roadmap Phases</option>
+        <option value="P1">Phase 1: Java & Math Refresher (Days 1-7)</option>
+        <option value="P2">Phase 2: Arrays & Strings (Days 8-20)</option>
+        <option value="P3">Phase 3: Hashing, Sliding Window & BS (Days 21-30)</option>
+        <option value="P4">Phase 4: Recursion, Sorting & Bits (Days 31-40)</option>
+        <option value="P5">Phase 5: Linked List, Stack & Queue (Days 41-50)</option>
+        <option value="P6">Phase 6: Trees, BST & Heaps (Days 51-62)</option>
+        <option value="P7">Phase 7: Graphs & Greedy (Days 63-72)</option>
+        <option value="P8">Phase 8: Dynamic Programming (Days 73-82)</option>
+        <option value="P9">Phase 9: Company Mock & Revision (Days 83-90)</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <button class="btn btn-sm" onclick="expandAllNotes()">📝 Show All Notes</button>
+      <button class="btn btn-sm" onclick="collapseAllNotes()">🙈 Hide Notes</button>
+    </div>
+  </div>
+
+  <!-- Days List Container -->
+  <div id="daysList" class="days-list"></div>
+</div>
+
+<!-- Modal: Set Start Date -->
+<div class="modal-overlay" id="startDateModal">
+  <div class="modal-box">
+    <div class="modal-title">📅 Set Sprint Start Date</div>
+    <div class="modal-body">
+      Setting a start date maps your 90-day DSA plan to real calendar days. The app will calculate your current day automatically.
+      <br><br>
+      <label style="display:block; font-weight:600; color:var(--text-main); margin-bottom:6px;">Start Date:</label>
+      <input type="date" id="startDateInput" class="search-input" style="width:100%;">
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeStartDateModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="saveStartDate()">Save Start Date</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Reset Confirmation -->
+<div class="modal-overlay" id="resetModal">
+  <div class="modal-box">
+    <div class="modal-title" style="color:var(--accent-danger);">⚠️ Reset All Progress?</div>
+    <div class="modal-body">
+      Are you sure you want to reset all solved questions, streaks, notes, and stars? This action cannot be undone. You may want to <strong>Export JSON</strong> first!
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeResetModal()">Cancel</button>
+      <button class="btn btn-danger" onclick="executeReset()">Yes, Reset Everything</button>
+    </div>
+  </div>
+</div>
+
+<!-- EMBEDDED DATASET -->
+<script>
+const SPRINT_DATA = [
+  {
+    "day": 1,
+    "topic": "Java Refresher - Basics, I/O & Control Flow",
+    "conceptVideo": "https://www.youtube.com/watch?v=lus16ff6c14",
+    "questions": [
+      {
+        "title": "User Input / Output in Java & Data Types",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/java-input-output1341/1",
+        "video": "https://www.youtube.com/watch?v=lus16ff6c14"
+      },
+      {
+        "title": "Java If-Else Conditional Statements",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/java-if-else-decision-making0924/1",
+        "video": "https://www.youtube.com/watch?v=lus16ff6c14"
+      },
+      {
+        "title": "Java Switch Case Statement",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/java-switch-case-statement3529/1",
+        "video": "https://www.youtube.com/watch?v=lus16ff6c14"
+      }
+    ]
+  },
+  {
+    "day": 2,
+    "topic": "Java Refresher - Loops, Arrays Intro & Methods",
+    "conceptVideo": "https://www.youtube.com/watch?v=yVdKa8urOmE",
+    "questions": [
+      {
+        "title": "Print 1 To N Without Loop",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=yVdKa8urOmE"
+      },
+      {
+        "title": "Sum of Array Elements",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/sum-of-array-elements2502/1",
+        "video": "https://www.youtube.com/watch?v=yVdKa8urOmE"
+      },
+      {
+        "title": "Pass by Reference and Value in Java",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/pass-by-reference-and-value/1",
+        "video": "https://www.youtube.com/watch?v=yVdKa8urOmE"
+      }
+    ]
+  },
+  {
+    "day": 3,
+    "topic": "Pattern Printing & Nested Loops",
+    "conceptVideo": "https://www.youtube.com/watch?v=tNm_Nn15060",
+    "questions": [
+      {
+        "title": "Right-Angled Triangle Star Pattern",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/right-triangle/1",
+        "video": "https://www.youtube.com/watch?v=tNm_Nn15060"
+      },
+      {
+        "title": "Inverted Star Pyramid Pattern",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/triangle-number-1665427132/1",
+        "video": "https://www.youtube.com/watch?v=tNm_Nn15060"
+      },
+      {
+        "title": "Diamond Star Pattern",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/pattern-11/1",
+        "video": "https://www.youtube.com/watch?v=tNm_Nn15060"
+      }
+    ]
+  },
+  {
+    "day": 4,
+    "topic": "Basic Math & Digit Extraction",
+    "conceptVideo": "https://www.youtube.com/watch?v=1xNbjMdbjug",
+    "questions": [
+      {
+        "title": "Count Digits in a Number",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/count-digits5716/1",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Reverse Integer",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/reverse-integer/",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Palindrome Number",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/palindrome-number/",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      }
+    ]
+  },
+  {
+    "day": 5,
+    "topic": "Number Theory - Primes, Divisors & Armstrong Numbers",
+    "conceptVideo": "https://www.youtube.com/watch?v=1xNbjMdbjug",
+    "questions": [
+      {
+        "title": "Armstrong Numbers Check",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/armstrong-numbers2727/1",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Check for Prime Number",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/prime-number2314/1",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Sum of All Divisors 1 to N",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/sum-of-all-divisors-from-1-to-n4738/1",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      }
+    ]
+  },
+  {
+    "day": 6,
+    "topic": "Math Essentials - GCD/LCM & Fibonacci Series",
+    "conceptVideo": "https://www.youtube.com/watch?v=1xNbjMdbjug",
+    "questions": [
+      {
+        "title": "LCM And GCD of Two Numbers",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/lcm-and-gcd4516/1",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Fibonacci Number",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/fibonacci-number/",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Factorial of Large Numbers",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/factorials-of-large-numbers4001/1",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      }
+    ]
+  },
+  {
+    "day": 7,
+    "topic": "Week 1 Consolidation - Java Basics & Math Revision",
+    "conceptVideo": "https://www.youtube.com/watch?v=1xNbjMdbjug",
+    "questions": [
+      {
+        "title": "Power of Three",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/power-of-three/",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Count Primes (Sieve of Eratosthenes)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/count-primes/",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Sqrt(x)",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sqrtx/",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      }
+    ]
+  },
+  {
+    "day": 8,
+    "topic": "Arrays - Traversal & Extremes",
+    "conceptVideo": "https://www.youtube.com/watch?v=37E9ckMDdTk",
+    "questions": [
+      {
+        "title": "Find the Largest Element in an Array",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/largest-element-in-array2854/1",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      },
+      {
+        "title": "Second Largest Element in Array",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/second-largest3735/1",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      },
+      {
+        "title": "Third Maximum Number",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/third-maximum-number/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      }
+    ]
+  },
+  {
+    "day": 9,
+    "topic": "Arrays - Sorting Check & Duplicates",
+    "conceptVideo": "https://www.youtube.com/watch?v=37E9ckMDdTk",
+    "questions": [
+      {
+        "title": "Check if Array Is Sorted and Rotated",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      },
+      {
+        "title": "Remove Duplicates from Sorted Array",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/remove-duplicates-from-sorted-array/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      },
+      {
+        "title": "Remove Element",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/remove-element/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      }
+    ]
+  },
+  {
+    "day": 10,
+    "topic": "Arrays - Rotations & Shifts",
+    "conceptVideo": "https://www.youtube.com/watch?v=wvcQg43_V8U",
+    "questions": [
+      {
+        "title": "Move Zeroes to End",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/move-zeroes/",
+        "video": "https://www.youtube.com/watch?v=wvcQg43_V8U"
+      },
+      {
+        "title": "Rotate Array by K Steps",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/rotate-array/",
+        "video": "https://www.youtube.com/watch?v=wvcQg43_V8U"
+      },
+      {
+        "title": "Quick Left Rotation of Array",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/quick-left-rotation3815/1",
+        "video": "https://www.youtube.com/watch?v=wvcQg43_V8U"
+      }
+    ]
+  },
+  {
+    "day": 11,
+    "topic": "Arrays - Two Pointer Techniques",
+    "conceptVideo": "https://www.youtube.com/watch?v=-jHwgFDDrHc",
+    "questions": [
+      {
+        "title": "Reverse an Array",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/reverse-an-array/1",
+        "video": "https://www.youtube.com/watch?v=-jHwgFDDrHc"
+      },
+      {
+        "title": "Two Sum II - Input Array Is Sorted",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/",
+        "video": "https://www.youtube.com/watch?v=-jHwgFDDrHc"
+      },
+      {
+        "title": "Sort Array By Parity (Even/Odd)",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sort-array-by-parity/",
+        "video": "https://www.youtube.com/watch?v=-jHwgFDDrHc"
+      }
+    ]
+  },
+  {
+    "day": 12,
+    "topic": "Arrays - Prefix Sum & Range Queries",
+    "conceptVideo": "https://www.youtube.com/watch?v=frf7704xS78",
+    "questions": [
+      {
+        "title": "Find Pivot Index / Equilibrium Point",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/find-pivot-index/",
+        "video": "https://www.youtube.com/watch?v=frf7704xS78"
+      },
+      {
+        "title": "Range Sum Query - Immutable",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/range-sum-query-immutable/",
+        "video": "https://www.youtube.com/watch?v=frf7704xS78"
+      },
+      {
+        "title": "Product of Array Except Self",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/product-of-array-except-self/",
+        "video": "https://www.youtube.com/watch?v=frf7704xS78"
+      }
+    ]
+  },
+  {
+    "day": 13,
+    "topic": "Arrays - Kadane's Algorithm & Voting Algo",
+    "conceptVideo": "https://www.youtube.com/watch?v=AHZpyENo7k4",
+    "questions": [
+      {
+        "title": "Maximum Subarray (Kadane's Algo)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/maximum-subarray/",
+        "video": "https://www.youtube.com/watch?v=AHZpyENo7k4"
+      },
+      {
+        "title": "Majority Element (Boyer-Moore Voting)",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/majority-element/",
+        "video": "https://www.youtube.com/watch?v=AHZpyENo7k4"
+      },
+      {
+        "title": "Majority Element II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/majority-element-ii/",
+        "video": "https://www.youtube.com/watch?v=AHZpyENo7k4"
+      }
+    ]
+  },
+  {
+    "day": 14,
+    "topic": "Week 2 Consolidation - Arrays Master Revision",
+    "conceptVideo": "https://www.youtube.com/watch?v=AHZpyENo7k4",
+    "questions": [
+      {
+        "title": "Best Time to Buy and Sell Stock",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/",
+        "video": "https://www.youtube.com/watch?v=excelB7fV4w"
+      },
+      {
+        "title": "Rearrange Array Elements by Sign",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/rearrange-array-elements-by-sign/",
+        "video": "https://www.youtube.com/watch?v=h4aBagy4Uok"
+      },
+      {
+        "title": "Max Consecutive Ones",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/max-consecutive-ones/",
+        "video": "https://www.youtube.com/watch?v=Mo33MjjMlyA"
+      }
+    ]
+  },
+  {
+    "day": 15,
+    "topic": "Strings - Basics, Characters & Palindromes",
+    "conceptVideo": "https://www.youtube.com/watch?v=WDJercqgV4c",
+    "questions": [
+      {
+        "title": "Reverse String",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/reverse-string/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      },
+      {
+        "title": "Valid Palindrome",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/valid-palindrome/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      },
+      {
+        "title": "Reverse Words in a String",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/reverse-words-in-a-string/",
+        "video": "https://www.youtube.com/watch?v=vhnRAaJybpA"
+      }
+    ]
+  },
+  {
+    "day": 16,
+    "topic": "Strings - Anagrams & Frequency Counting",
+    "conceptVideo": "https://www.youtube.com/watch?v=WDJercqgV4c",
+    "questions": [
+      {
+        "title": "Valid Anagram",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/valid-anagram/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      },
+      {
+        "title": "Isomorphic Strings",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/isomorphic-strings/",
+        "video": "https://www.youtube.com/watch?v=7yF-U1hLEqU"
+      },
+      {
+        "title": "Sort Characters By Frequency",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sort-characters-by-frequency/",
+        "video": "https://www.youtube.com/watch?v=trTbgqM2-aQ"
+      }
+    ]
+  },
+  {
+    "day": 17,
+    "topic": "Strings - Substrings & Prefix Matching",
+    "conceptVideo": "https://www.youtube.com/watch?v=WDJercqgV4c",
+    "questions": [
+      {
+        "title": "Longest Common Prefix",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/longest-common-prefix/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      },
+      {
+        "title": "Rotate String",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/rotate-string/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      },
+      {
+        "title": "String Compression",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/string-compression/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      }
+    ]
+  },
+  {
+    "day": 18,
+    "topic": "Strings - Subsequences & Roman Numerals",
+    "conceptVideo": "https://www.youtube.com/watch?v=WDJercqgV4c",
+    "questions": [
+      {
+        "title": "Is Subsequence",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/is-subsequence/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      },
+      {
+        "title": "Valid Palindrome II",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/valid-palindrome-ii/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      },
+      {
+        "title": "Roman to Integer",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/roman-to-integer/",
+        "video": "https://www.youtube.com/watch?v=WDJercqgV4c"
+      }
+    ]
+  },
+  {
+    "day": 19,
+    "topic": "Arrays & Strings - Merging & Intersections",
+    "conceptVideo": "https://www.youtube.com/watch?v=37E9ckMDdTk",
+    "questions": [
+      {
+        "title": "Merge Sorted Array",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/merge-sorted-array/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      },
+      {
+        "title": "Missing Number",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/missing-number/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      },
+      {
+        "title": "Intersection of Two Arrays II",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/intersection-of-two-arrays-ii/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      }
+    ]
+  },
+  {
+    "day": 20,
+    "topic": "Arrays - Pascal's Triangle & Matrices Intro",
+    "conceptVideo": "https://www.youtube.com/watch?v=37E9ckMDdTk",
+    "questions": [
+      {
+        "title": "Pascal's Triangle",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/pascals-triangle/",
+        "video": "https://www.youtube.com/watch?v=6JYwUwg4vin"
+      },
+      {
+        "title": "Matrix Diagonal Sum",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/matrix-diagonal-sum/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      },
+      {
+        "title": "Spiral Matrix",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/spiral-matrix/",
+        "video": "https://www.youtube.com/watch?v=3Zp3PboLNE0"
+      }
+    ]
+  },
+  {
+    "day": 21,
+    "topic": "Week 3 Consolidation - Arrays & Strings Master Review",
+    "conceptVideo": "https://www.youtube.com/watch?v=37E9ckMDdTk",
+    "questions": [
+      {
+        "title": "Find All Numbers Disappeared in an Array",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      },
+      {
+        "title": "Rotate Image / Matrix by 90 Degrees",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/rotate-image/",
+        "video": "https://www.youtube.com/watch?v=Z0r2uAgly-o"
+      },
+      {
+        "title": "String to Integer (atoi)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/string-to-integer-atoi/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      }
+    ]
+  },
+  {
+    "day": 22,
+    "topic": "Hashing - HashSet Fundamentals & Unique Elements",
+    "conceptVideo": "https://www.youtube.com/watch?v=gT8T0EsmhO4",
+    "questions": [
+      {
+        "title": "Contains Duplicate",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/contains-duplicate/",
+        "video": "https://www.youtube.com/watch?v=gT8T0EsmhO4"
+      },
+      {
+        "title": "Single Number",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/single-number/",
+        "video": "https://www.youtube.com/watch?v=gT8T0EsmhO4"
+      },
+      {
+        "title": "Intersection of Two Arrays",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/intersection-of-two-arrays/",
+        "video": "https://www.youtube.com/watch?v=gT8T0EsmhO4"
+      }
+    ]
+  },
+  {
+    "day": 23,
+    "topic": "Hashing - HashMap Frequencies & Pair Lookups",
+    "conceptVideo": "https://www.youtube.com/watch?v=UXDSeD9mN-k",
+    "questions": [
+      {
+        "title": "Two Sum",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/two-sum/",
+        "video": "https://www.youtube.com/watch?v=UXDSeD9mN-k"
+      },
+      {
+        "title": "First Unique Character in a String",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/first-unique-character-in-a-string/",
+        "video": "https://www.youtube.com/watch?v=UXDSeD9mN-k"
+      },
+      {
+        "title": "Check If Array Pairs Are Divisible by k",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/check-if-array-pairs-are-divisible-by-k/",
+        "video": "https://www.youtube.com/watch?v=UXDSeD9mN-k"
+      }
+    ]
+  },
+  {
+    "day": 24,
+    "topic": "Hashing - Subarray Sums & Prefix Maps",
+    "conceptVideo": "https://www.youtube.com/watch?v=xvN16wAGEHI",
+    "questions": [
+      {
+        "title": "Subarray Sum Equals K",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/subarray-sum-equals-k/",
+        "video": "https://www.youtube.com/watch?v=xvN16wAGEHI"
+      },
+      {
+        "title": "Longest Subarray with Sum K",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1",
+        "video": "https://www.youtube.com/watch?v=frf7704xS78"
+      },
+      {
+        "title": "Subarray Sums Divisible by K",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/subarray-sums-divisible-by-k/",
+        "video": "https://www.youtube.com/watch?v=xvN16wAGEHI"
+      }
+    ]
+  },
+  {
+    "day": 25,
+    "topic": "Hashing Advanced - Grouping & Sequences",
+    "conceptVideo": "https://www.youtube.com/watch?v=oO5uLE7EUlM",
+    "questions": [
+      {
+        "title": "Group Anagrams",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/group-anagrams/",
+        "video": "https://www.youtube.com/watch?v=vqd68v2K9b8"
+      },
+      {
+        "title": "Longest Consecutive Sequence",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/longest-consecutive-sequence/",
+        "video": "https://www.youtube.com/watch?v=oO5uLE7EUlM"
+      },
+      {
+        "title": "Top K Frequent Elements",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/top-k-frequent-elements/",
+        "video": "https://www.youtube.com/watch?v=YPTqKIgVk-k"
+      }
+    ]
+  },
+  {
+    "day": 26,
+    "topic": "Sliding Window - Fixed Window Size",
+    "conceptVideo": "https://www.youtube.com/watch?v=MK-NZ4hN7SM",
+    "questions": [
+      {
+        "title": "Maximum Average Subarray I",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/maximum-average-subarray-i/",
+        "video": "https://www.youtube.com/watch?v=MK-NZ4hN7SM"
+      },
+      {
+        "title": "Max Sum Subarray of Size K",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1",
+        "video": "https://www.youtube.com/watch?v=MK-NZ4hN7SM"
+      },
+      {
+        "title": "First Negative Integer in Every Window of Size K",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k5125/1",
+        "video": "https://www.youtube.com/watch?v=MK-NZ4hN7SM"
+      }
+    ]
+  },
+  {
+    "day": 27,
+    "topic": "Sliding Window - Variable Window Size",
+    "conceptVideo": "https://www.youtube.com/watch?v=wiGpQwVHdE0",
+    "questions": [
+      {
+        "title": "Longest Substring Without Repeating Characters",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+        "video": "https://www.youtube.com/watch?v=wiGpQwVHdE0"
+      },
+      {
+        "title": "Max Consecutive Ones III",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/max-consecutive-ones-iii/",
+        "video": "https://www.youtube.com/watch?v=3E4JBHSLpYk"
+      },
+      {
+        "title": "Minimum Size Subarray Sum",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/minimum-size-subarray-sum/",
+        "video": "https://www.youtube.com/watch?v=wiGpQwVHdE0"
+      }
+    ]
+  },
+  {
+    "day": 28,
+    "topic": "Week 4 Consolidation - Hashing & Sliding Window",
+    "conceptVideo": "https://www.youtube.com/watch?v=wiGpQwVHdE0",
+    "questions": [
+      {
+        "title": "Find All Anagrams in a String",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/find-all-anagrams-in-a-string/",
+        "video": "https://www.youtube.com/watch?v=MW4lJcE68Hk"
+      },
+      {
+        "title": "Permutation in String",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/permutation-in-string/",
+        "video": "https://www.youtube.com/watch?v=wpq2vV0N0Kk"
+      },
+      {
+        "title": "Subarrays with K Different Integers",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/subarrays-with-k-different-integers/",
+        "video": "https://www.youtube.com/watch?v=wiGpQwVHdE0"
+      }
+    ]
+  },
+  {
+    "day": 29,
+    "topic": "Binary Search - Fundamentals & Searching",
+    "conceptVideo": "https://www.youtube.com/watch?v=MHf6aWe2wGg",
+    "questions": [
+      {
+        "title": "Binary Search",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/binary-search/",
+        "video": "https://www.youtube.com/watch?v=MHf6aWe2wGg"
+      },
+      {
+        "title": "Search Insert Position",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/search-insert-position/",
+        "video": "https://www.youtube.com/watch?v=K-RYzDZkzCI"
+      },
+      {
+        "title": "Find First and Last Position of Element in Sorted Array",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
+        "video": "https://www.youtube.com/watch?v=hjR1IYV9C58"
+      }
+    ]
+  },
+  {
+    "day": 30,
+    "topic": "Binary Search - Rotated Arrays & Special Cases",
+    "conceptVideo": "https://www.youtube.com/watch?v=r3pRJ8-skgs",
+    "questions": [
+      {
+        "title": "Search in Rotated Sorted Array",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/search-in-rotated-sorted-array/",
+        "video": "https://www.youtube.com/watch?v=r3pRJ8-skgs"
+      },
+      {
+        "title": "Find Minimum in Rotated Sorted Array",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/",
+        "video": "https://www.youtube.com/watch?v=nhEMXDzhnNw"
+      },
+      {
+        "title": "Single Element in a Sorted Array",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/single-element-in-a-sorted-array/",
+        "video": "https://www.youtube.com/watch?v=AZOmHuHadxM"
+      }
+    ]
+  },
+  {
+    "day": 31,
+    "topic": "Binary Search on Answer Range",
+    "conceptVideo": "https://www.youtube.com/watch?v=Bsv3FPUX_zs",
+    "questions": [
+      {
+        "title": "Sqrt(x) using Binary Search",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sqrtx/",
+        "video": "https://www.youtube.com/watch?v=Bsv3FPUX_zs"
+      },
+      {
+        "title": "Capacity To Ship Packages Within D Days",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/",
+        "video": "https://www.youtube.com/watch?v=ER_InAguGNA"
+      },
+      {
+        "title": "Koko Eating Bananas",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/koko-eating-bananas/",
+        "video": "https://www.youtube.com/watch?v=U2SozAs9RzA"
+      }
+    ]
+  },
+  {
+    "day": 32,
+    "topic": "Binary Search - Harder Applications & Peak Elements",
+    "conceptVideo": "https://www.youtube.com/watch?v=Z0v6p5LkWvM",
+    "questions": [
+      {
+        "title": "Find Peak Element",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/find-peak-element/",
+        "video": "https://www.youtube.com/watch?v=cXxmbemS6XM"
+      },
+      {
+        "title": "Aggressive Cows / Allocate Minimum Pages",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1",
+        "video": "https://www.youtube.com/watch?v=gYmWHvRHu-s"
+      },
+      {
+        "title": "Median of Two Sorted Arrays",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/median-of-two-sorted-arrays/",
+        "video": "https://www.youtube.com/watch?v=NTop3VTjmxk"
+      }
+    ]
+  },
+  {
+    "day": 33,
+    "topic": "Recursion Fundamentals & Functional Call Stack",
+    "conceptVideo": "https://www.youtube.com/watch?v=yVdKa8urOmE",
+    "questions": [
+      {
+        "title": "Print 1 to N Using Recursion",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/print-1-to-n-without-using-loops-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=yVdKa8urOmE"
+      },
+      {
+        "title": "Factorial of a Number",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/factorial5739/1",
+        "video": "https://www.youtube.com/watch?v=yVdKa8urOmE"
+      },
+      {
+        "title": "Pow(x, n)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/powx-n/",
+        "video": "https://www.youtube.com/watch?v=l0YC3876qxg"
+      }
+    ]
+  },
+  {
+    "day": 34,
+    "topic": "Recursion - Subsets & Combination Generation",
+    "conceptVideo": "https://www.youtube.com/watch?v=AxNNVECce8c",
+    "questions": [
+      {
+        "title": "Subsets (Power Set)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/subsets/",
+        "video": "https://www.youtube.com/watch?v=AxNNVECce8c"
+      },
+      {
+        "title": "Subset Sums",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/subset-sums1514/1",
+        "video": "https://www.youtube.com/watch?v=rYkfBRtMJ3w"
+      },
+      {
+        "title": "Combination Sum",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/combination-sum/",
+        "video": "https://www.youtube.com/watch?v=OyZFFqQtu98"
+      }
+    ]
+  },
+  {
+    "day": 35,
+    "topic": "Week 5 Consolidation - Binary Search & Recursion",
+    "conceptVideo": "https://www.youtube.com/watch?v=AxNNVECce8c",
+    "questions": [
+      {
+        "title": "Combination Sum II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/combination-sum-ii/",
+        "video": "https://www.youtube.com/watch?v=G1fRTGRxXU8"
+      },
+      {
+        "title": "Search a 2D Matrix",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/search-a-2d-matrix/",
+        "video": "https://www.youtube.com/watch?v=JXU4QDQzaBI"
+      },
+      {
+        "title": "Search a 2D Matrix II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/search-a-2d-matrix-ii/",
+        "video": "https://www.youtube.com/watch?v=9ZbB397jU4k"
+      }
+    ]
+  },
+  {
+    "day": 36,
+    "topic": "Backtracking Essentials",
+    "conceptVideo": "https://www.youtube.com/watch?v=YK78Fu5hYxA",
+    "questions": [
+      {
+        "title": "Permutations",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/permutations/",
+        "video": "https://www.youtube.com/watch?v=YK78Fu5hYxA"
+      },
+      {
+        "title": "Word Search",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/word-search/",
+        "video": "https://www.youtube.com/watch?v=pfiQ_PS1g8E"
+      },
+      {
+        "title": "N-Queens",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/n-queens/",
+        "video": "https://www.youtube.com/watch?v=i05Ju7AUdz8"
+      }
+    ]
+  },
+  {
+    "day": 37,
+    "topic": "Sorting Algorithms - Selection, Insertion & Merge Sort",
+    "conceptVideo": "https://www.youtube.com/watch?v=HGk_ypEuS24",
+    "questions": [
+      {
+        "title": "Selection Sort",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/selection-sort/1",
+        "video": "https://www.youtube.com/watch?v=HGk_ypEuS24"
+      },
+      {
+        "title": "Insertion Sort",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/insertion-sort/1",
+        "video": "https://www.youtube.com/watch?v=HGk_ypEuS24"
+      },
+      {
+        "title": "Sort an Array (Merge Sort)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sort-an-array/",
+        "video": "https://www.youtube.com/watch?v=ogjf7ORKya8"
+      }
+    ]
+  },
+  {
+    "day": 38,
+    "topic": "Sorting Algorithms - Quick Sort & Dutch National Flag",
+    "conceptVideo": "https://www.youtube.com/watch?v=WIrA4YexLRQ",
+    "questions": [
+      {
+        "title": "Quick Sort",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/quick-sort/1",
+        "video": "https://www.youtube.com/watch?v=WIrA4YexLRQ"
+      },
+      {
+        "title": "Sort Colors (Dutch National Flag)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sort-colors/",
+        "video": "https://www.youtube.com/watch?v=tp8JIuCXBaU"
+      },
+      {
+        "title": "Count Inversions in Array",
+        "difficulty": "Hard",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=owZhw-a74_g"
+      }
+    ]
+  },
+  {
+    "day": 39,
+    "topic": "Bit Manipulation - Basics & Bitwise Tricks",
+    "conceptVideo": "https://www.youtube.com/watch?v=5rtVTYAk9KQ",
+    "questions": [
+      {
+        "title": "Number of 1 Bits (Hamming Weight)",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/number-of-1-bits/",
+        "video": "https://www.youtube.com/watch?v=5rtVTYAk9KQ"
+      },
+      {
+        "title": "Counting Bits",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/counting-bits/",
+        "video": "https://www.youtube.com/watch?v=5rtVTYAk9KQ"
+      },
+      {
+        "title": "Power of Two",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/power-of-two/",
+        "video": "https://www.youtube.com/watch?v=5rtVTYAk9KQ"
+      }
+    ]
+  },
+  {
+    "day": 40,
+    "topic": "Bit Manipulation - Advanced XOR Problems",
+    "conceptVideo": "https://www.youtube.com/watch?v=5rtVTYAk9KQ",
+    "questions": [
+      {
+        "title": "Subsets Using Bitmasking",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/subsets/",
+        "video": "https://www.youtube.com/watch?v=5rtVTYAk9KQ"
+      },
+      {
+        "title": "Single Number II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/single-number-ii/",
+        "video": "https://www.youtube.com/watch?v=5rtVTYAk9KQ"
+      },
+      {
+        "title": "Single Number III",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/single-number-iii/",
+        "video": "https://www.youtube.com/watch?v=5rtVTYAk9KQ"
+      }
+    ]
+  },
+  {
+    "day": 41,
+    "topic": "Linked List - Basics, Structure & Traversals",
+    "conceptVideo": "https://www.youtube.com/watch?v=Nq7ok-OyEpg",
+    "questions": [
+      {
+        "title": "Linked List Insertion",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/linked-list-insertion-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=Nq7ok-OyEpg"
+      },
+      {
+        "title": "Count Nodes of Linked List",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/count-nodes-of-linked-list/1",
+        "video": "https://www.youtube.com/watch?v=Nq7ok-OyEpg"
+      },
+      {
+        "title": "Search in Linked List",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/search-in-linked-list-1664434326/1",
+        "video": "https://www.youtube.com/watch?v=Nq7ok-OyEpg"
+      }
+    ]
+  },
+  {
+    "day": 42,
+    "topic": "Week 6 Consolidation - Sorting, Bits & LL Intro",
+    "conceptVideo": "https://www.youtube.com/watch?v=Nq7ok-OyEpg",
+    "questions": [
+      {
+        "title": "Reverse Bits",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/reverse-bits/",
+        "video": "https://www.youtube.com/watch?v=5rtVTYAk9KQ"
+      },
+      {
+        "title": "XOR Operation in an Array",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/xor-operation-in-an-array/",
+        "video": "https://www.youtube.com/watch?v=5rtVTYAk9KQ"
+      },
+      {
+        "title": "Merge Two Sorted Lists",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/merge-two-sorted-lists/",
+        "video": "https://www.youtube.com/watch?v=XIdigk956u0"
+      }
+    ]
+  },
+  {
+    "day": 43,
+    "topic": "Linked List - Pointers, Reverse & Middle",
+    "conceptVideo": "https://www.youtube.com/watch?v=D2vI2DNJGd8",
+    "questions": [
+      {
+        "title": "Reverse Linked List",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/reverse-linked-list/",
+        "video": "https://www.youtube.com/watch?v=D2vI2DNJGd8"
+      },
+      {
+        "title": "Middle of the Linked List",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/middle-of-the-linked-list/",
+        "video": "https://www.youtube.com/watch?v=7LQJRwNQ47U"
+      },
+      {
+        "title": "Delete Node in a Linked List",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/delete-node-in-a-linked-list/",
+        "video": "https://www.youtube.com/watch?v=icnp4FJdZ_U"
+      }
+    ]
+  },
+  {
+    "day": 44,
+    "topic": "Linked List - Cycle Detection & Deletions",
+    "conceptVideo": "https://www.youtube.com/watch?v=wiOo4DC5GGA",
+    "questions": [
+      {
+        "title": "Linked List Cycle (Floyd's Algo)",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/linked-list-cycle/",
+        "video": "https://www.youtube.com/watch?v=wiOo4DC5GGA"
+      },
+      {
+        "title": "Linked List Cycle II (Find Start)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/linked-list-cycle-ii/",
+        "video": "https://www.youtube.com/watch?v=2Kd0KKmmHFc"
+      },
+      {
+        "title": "Remove Nth Node From End of List",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/",
+        "video": "https://www.youtube.com/watch?v=3kMKYQ2wXJw"
+      }
+    ]
+  },
+  {
+    "day": 45,
+    "topic": "Linked List - Advanced Pointer Manipulation",
+    "conceptVideo": "https://www.youtube.com/watch?v=lRYDBC8sS10",
+    "questions": [
+      {
+        "title": "Palindrome Linked List",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/palindrome-linked-list/",
+        "video": "https://www.youtube.com/watch?v=lRYDBC8sS10"
+      },
+      {
+        "title": "Add Two Numbers",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/add-two-numbers/",
+        "video": "https://www.youtube.com/watch?v=wgFPrzTjm7s"
+      },
+      {
+        "title": "Reverse Nodes in k-Group",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/reverse-nodes-in-k-group/",
+        "video": "https://www.youtube.com/watch?v=1UOPsfP85V4"
+      }
+    ]
+  },
+  {
+    "day": 46,
+    "topic": "Stack & Queue Fundamentals",
+    "conceptVideo": "https://www.youtube.com/watch?v=r087cldz7mU",
+    "questions": [
+      {
+        "title": "Implement Stack using Queues",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/implement-stack-using-queues/",
+        "video": "https://www.youtube.com/watch?v=r087cldz7mU"
+      },
+      {
+        "title": "Implement Queue using Stacks",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/implement-queue-using-stacks/",
+        "video": "https://www.youtube.com/watch?v=r087cldz7mU"
+      },
+      {
+        "title": "Valid Parentheses",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/valid-parentheses/",
+        "video": "https://www.youtube.com/watch?v=wkDfsKijrZ8"
+      }
+    ]
+  },
+  {
+    "day": 47,
+    "topic": "Stack Applications & Min Stack",
+    "conceptVideo": "https://www.youtube.com/watch?v=V8U5ej3UCuc",
+    "questions": [
+      {
+        "title": "Min Stack",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/min-stack/",
+        "video": "https://www.youtube.com/watch?v=V8U5ej3UCuc"
+      },
+      {
+        "title": "Evaluate Reverse Polish Notation",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/evaluate-reverse-polish-notation/",
+        "video": "https://www.youtube.com/watch?v=iu10lxS4n-s"
+      },
+      {
+        "title": "Design Circular Queue",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/design-circular-queue/",
+        "video": "https://www.youtube.com/watch?v=r087cldz7mU"
+      }
+    ]
+  },
+  {
+    "day": 48,
+    "topic": "Monotonic Stack - Next Greater Element",
+    "conceptVideo": "https://www.youtube.com/watch?v=Du881K7Jtk8",
+    "questions": [
+      {
+        "title": "Next Greater Element I",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/next-greater-element-i/",
+        "video": "https://www.youtube.com/watch?v=Du881K7Jtk8"
+      },
+      {
+        "title": "Next Greater Element II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/next-greater-element-ii/",
+        "video": "https://www.youtube.com/watch?v=7PrncD7v9YQ"
+      },
+      {
+        "title": "Daily Temperatures",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/daily-temperatures/",
+        "video": "https://www.youtube.com/watch?v=cTBiBSnj138"
+      }
+    ]
+  },
+  {
+    "day": 49,
+    "topic": "Week 7 Consolidation - LL & Monotonic Stack",
+    "conceptVideo": "https://www.youtube.com/watch?v=Du881K7Jtk8",
+    "questions": [
+      {
+        "title": "Intersection of Two Linked Lists",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/intersection-of-two-linked-lists/",
+        "video": "https://www.youtube.com/watch?v=0DOd7U65V_E"
+      },
+      {
+        "title": "Asteroid Collision",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/asteroid-collision/",
+        "video": "https://www.youtube.com/watch?v=LN7169vhGjg"
+      },
+      {
+        "title": "Online Stock Span",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/online-stock-span/",
+        "video": "https://www.youtube.com/watch?v=slYh0ZNEqSW"
+      }
+    ]
+  },
+  {
+    "day": 50,
+    "topic": "Monotonic Stack & Queue Master Challenges",
+    "conceptVideo": "https://www.youtube.com/watch?v=X0XdUYg-eYg",
+    "questions": [
+      {
+        "title": "Largest Rectangle in Histogram",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/largest-rectangle-in-histogram/",
+        "video": "https://www.youtube.com/watch?v=X0XdUYg-eYg"
+      },
+      {
+        "title": "Trapping Rain Water",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/trapping-rain-water/",
+        "video": "https://www.youtube.com/watch?v=ZI2z5-0zi0w"
+      },
+      {
+        "title": "Sliding Window Maximum",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sliding-window-maximum/",
+        "video": "https://www.youtube.com/watch?v=CZQGRp93K4g"
+      }
+    ]
+  },
+  {
+    "day": 51,
+    "topic": "Binary Trees - Traversals (DFS & BFS)",
+    "conceptVideo": "https://www.youtube.com/watch?v=_ANrF3FJm7I",
+    "questions": [
+      {
+        "title": "Binary Tree Inorder Traversal",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/binary-tree-inorder-traversal/",
+        "video": "https://www.youtube.com/watch?v=Z_Up8GAR1hQ"
+      },
+      {
+        "title": "Binary Tree Preorder Traversal",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/binary-tree-preorder-traversal/",
+        "video": "https://www.youtube.com/watch?v=rl_N2MVA7XY"
+      },
+      {
+        "title": "Binary Tree Level Order Traversal",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/binary-tree-level-order-traversal/",
+        "video": "https://www.youtube.com/watch?v=EoAsWbO7sqg"
+      }
+    ]
+  },
+  {
+    "day": 52,
+    "topic": "Binary Trees - Depth & Structural Properties",
+    "conceptVideo": "https://www.youtube.com/watch?v=eD3tmO66a48",
+    "questions": [
+      {
+        "title": "Maximum Depth of Binary Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/maximum-depth-of-binary-tree/",
+        "video": "https://www.youtube.com/watch?v=eD3tmO66a48"
+      },
+      {
+        "title": "Balanced Binary Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/balanced-binary-tree/",
+        "video": "https://www.youtube.com/watch?v=Yt50Jfbd8Po"
+      },
+      {
+        "title": "Diameter of Binary Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/diameter-of-binary-tree/",
+        "video": "https://www.youtube.com/watch?v=Rezetez59Nk"
+      }
+    ]
+  },
+  {
+    "day": 53,
+    "topic": "Binary Trees - Symmetry & Views",
+    "conceptVideo": "https://www.youtube.com/watch?v=nKgiNffc9OU",
+    "questions": [
+      {
+        "title": "Same Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/same-tree/",
+        "video": "https://www.youtube.com/watch?v=BhuvF_-PWS0"
+      },
+      {
+        "title": "Symmetric Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/symmetric-tree/",
+        "video": "https://www.youtube.com/watch?v=nKgiNffc9OU"
+      },
+      {
+        "title": "Binary Tree Right Side View",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/binary-tree-right-side-view/",
+        "video": "https://www.youtube.com/watch?v=KV4mRzT77a8"
+      }
+    ]
+  },
+  {
+    "day": 54,
+    "topic": "Binary Trees - Paths & Lowest Common Ancestor",
+    "conceptVideo": "https://www.youtube.com/watch?v=_-gJ425EGwA",
+    "questions": [
+      {
+        "title": "Path Sum",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/path-sum/",
+        "video": "https://www.youtube.com/watch?v=HGfFbAy7lJk"
+      },
+      {
+        "title": "Lowest Common Ancestor of a Binary Tree",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+        "video": "https://www.youtube.com/watch?v=_-gJ425EGwA"
+      },
+      {
+        "title": "Binary Tree Maximum Path Sum",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/binary-tree-maximum-path-sum/",
+        "video": "https://www.youtube.com/watch?v=WszrfSwMz58"
+      }
+    ]
+  },
+  {
+    "day": 55,
+    "topic": "Binary Search Tree (BST) Basics",
+    "conceptVideo": "https://www.youtube.com/watch?v=pYT9F8_LFTM",
+    "questions": [
+      {
+        "title": "Search in a Binary Search Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+        "video": "https://www.youtube.com/watch?v=KcNt6v_56cc"
+      },
+      {
+        "title": "Insert into a Binary Search Tree",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/insert-into-a-binary-search-tree/",
+        "video": "https://www.youtube.com/watch?v=FiFiBaM29_g"
+      },
+      {
+        "title": "Validate Binary Search Tree",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/validate-binary-search-tree/",
+        "video": "https://www.youtube.com/watch?v=f-sj7I5oXEI"
+      }
+    ]
+  },
+  {
+    "day": 56,
+    "topic": "Week 8 Consolidation - Trees & BST Revision",
+    "conceptVideo": "https://www.youtube.com/watch?v=pYT9F8_LFTM",
+    "questions": [
+      {
+        "title": "Invert Binary Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/invert-binary-tree/",
+        "video": "https://www.youtube.com/watch?v=fKgZiCXb6zs"
+      },
+      {
+        "title": "Subtree of Another Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/subtree-of-another-tree/",
+        "video": "https://www.youtube.com/watch?v=HdMs2F9jX6Q"
+      },
+      {
+        "title": "Lowest Common Ancestor of a BST",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/",
+        "video": "https://www.youtube.com/watch?v=cX_kgeC5sp0"
+      }
+    ]
+  },
+  {
+    "day": 57,
+    "topic": "BST Operations & Kth Queries",
+    "conceptVideo": "https://www.youtube.com/watch?v=9TJYWh0obXY",
+    "questions": [
+      {
+        "title": "Delete Node in a BST",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/delete-node-in-a-bst/",
+        "video": "https://www.youtube.com/watch?v=kouxiP_H5WE"
+      },
+      {
+        "title": "Kth Smallest Element in a BST",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+        "video": "https://www.youtube.com/watch?v=9TJYWh0obXY"
+      },
+      {
+        "title": "Two Sum IV - Input is a BST",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/",
+        "video": "https://www.youtube.com/watch?v=ssL3sHwPeb4"
+      }
+    ]
+  },
+  {
+    "day": 58,
+    "topic": "Tree Construction & Flattening",
+    "conceptVideo": "https://www.youtube.com/watch?v=aZNaLrVebVQ",
+    "questions": [
+      {
+        "title": "Convert Sorted Array to Binary Search Tree",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/",
+        "video": "https://www.youtube.com/watch?v=0K0uCMYq5ng"
+      },
+      {
+        "title": "Construct BT from Preorder and Inorder Traversal",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/",
+        "video": "https://www.youtube.com/watch?v=aZNaLrVebVQ"
+      },
+      {
+        "title": "Flatten Binary Tree to Linked List",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/",
+        "video": "https://www.youtube.com/watch?v=sWf7k1x9XR4"
+      }
+    ]
+  },
+  {
+    "day": 59,
+    "topic": "Heaps / Priority Queue Fundamentals",
+    "conceptVideo": "https://www.youtube.com/watch?v=NKJnHewiGvg",
+    "questions": [
+      {
+        "title": "Kth Largest Element in an Array",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/kth-largest-element-in-an-array/",
+        "video": "https://www.youtube.com/watch?v=XEmy13g1Qxc"
+      },
+      {
+        "title": "Last Stone Weight",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/last-stone-weight/",
+        "video": "https://www.youtube.com/watch?v=B-QCq79-Vek"
+      },
+      {
+        "title": "Minimum Cost of Ropes",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=_k_c9nCsncw"
+      }
+    ]
+  },
+  {
+    "day": 60,
+    "topic": "Heaps Advanced & Stream Processing",
+    "conceptVideo": "https://www.youtube.com/watch?v=17z84h21iL8",
+    "questions": [
+      {
+        "title": "Top K Frequent Elements",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/top-k-frequent-elements/",
+        "video": "https://www.youtube.com/watch?v=YPTqKIgVk-k"
+      },
+      {
+        "title": "Merge k Sorted Lists",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/merge-k-sorted-lists/",
+        "video": "https://www.youtube.com/watch?v=kpCesr9VXDA"
+      },
+      {
+        "title": "Find Median from Data Stream",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/find-median-from-data-stream/",
+        "video": "https://www.youtube.com/watch?v=itmhHWaHupI"
+      }
+    ]
+  },
+  {
+    "day": 61,
+    "topic": "Priority Queue Applications",
+    "conceptVideo": "https://www.youtube.com/watch?v=s8LU4klpVEs",
+    "questions": [
+      {
+        "title": "Task Scheduler",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/task-scheduler/",
+        "video": "https://www.youtube.com/watch?v=s8LU4klpVEs"
+      },
+      {
+        "title": "Reorganize String",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/reorganize-string/",
+        "video": "https://www.youtube.com/watch?v=2g_b1aYTHeg"
+      },
+      {
+        "title": "Kth Smallest Element in a Sorted Matrix",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/",
+        "video": "https://www.youtube.com/watch?v=0d66nB0o58o"
+      }
+    ]
+  },
+  {
+    "day": 62,
+    "topic": "Trees & Heaps Wrap-up",
+    "conceptVideo": "https://www.youtube.com/watch?v=u4JAi2JJhTY",
+    "questions": [
+      {
+        "title": "Serialize and Deserialize Binary Tree",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/",
+        "video": "https://www.youtube.com/watch?v=u4JAi2JJhTY"
+      },
+      {
+        "title": "Binary Tree Zigzag Level Order Traversal",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+        "video": "https://www.youtube.com/watch?v=igbBOrmgTbo"
+      },
+      {
+        "title": "Maximum Frequency Stack",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/maximum-frequency-stack/",
+        "video": "https://www.youtube.com/watch?v=Z6idIicF12c"
+      }
+    ]
+  },
+  {
+    "day": 63,
+    "topic": "Week 9 Consolidation - Trees, BST & Heaps",
+    "conceptVideo": "https://www.youtube.com/watch?v=u4JAi2JJhTY",
+    "questions": [
+      {
+        "title": "Sort Array by Increasing Frequency",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sort-array-by-increasing-frequency/",
+        "video": "https://www.youtube.com/watch?v=u4JAi2JJhTY"
+      },
+      {
+        "title": "Binary Tree Zigzag Level Order Traversal",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/",
+        "video": "https://www.youtube.com/watch?v=igbBOrmgTbo"
+      },
+      {
+        "title": "Kth Smallest Element in a BST",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/",
+        "video": "https://www.youtube.com/watch?v=9TJYWh0obXY"
+      }
+    ]
+  },
+  {
+    "day": 64,
+    "topic": "Graph Fundamentals - Representation, BFS & DFS",
+    "conceptVideo": "https://www.youtube.com/watch?v=M3_pLsDdeuU",
+    "questions": [
+      {
+        "title": "Print Adjacency List",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/print-adjacency-list-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=M3_pLsDdeuU"
+      },
+      {
+        "title": "BFS of Graph",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/bfs-traversal-of-graph/1",
+        "video": "https://www.youtube.com/watch?v=-tgVpUgsQ5k"
+      },
+      {
+        "title": "DFS of Graph",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1",
+        "video": "https://www.youtube.com/watch?v=Qzf1a--rhp8"
+      }
+    ]
+  },
+  {
+    "day": 65,
+    "topic": "Graph Grid Problems & Connected Components",
+    "conceptVideo": "https://www.youtube.com/watch?v=mW6hFysm_dE",
+    "questions": [
+      {
+        "title": "Flood Fill",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/flood-fill/",
+        "video": "https://www.youtube.com/watch?v=C-2_uSRli8o"
+      },
+      {
+        "title": "Number of Islands",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/number-of-islands/",
+        "video": "https://www.youtube.com/watch?v=mW6hFysm_dE"
+      },
+      {
+        "title": "Max Area of Island",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/max-area-of-island/",
+        "video": "https://www.youtube.com/watch?v=W8AsXDTP3Up"
+      }
+    ]
+  },
+  {
+    "day": 66,
+    "topic": "Graph Cycles & Topological Sorting",
+    "conceptVideo": "https://www.youtube.com/watch?v=B5hUkvfEjGI",
+    "questions": [
+      {
+        "title": "Detect Cycle in Undirected Graph",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1",
+        "video": "https://www.youtube.com/watch?v=B5hUkvfEjGI"
+      },
+      {
+        "title": "Course Schedule I (Cycle Detection)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/course-schedule/",
+        "video": "https://www.youtube.com/watch?v=WAOfKpxYHR8"
+      },
+      {
+        "title": "Alien Dictionary",
+        "difficulty": "Hard",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/alien-dictionary/1",
+        "video": "https://www.youtube.com/watch?v=U3N_je7tWAs"
+      }
+    ]
+  },
+  {
+    "day": 67,
+    "topic": "Graph Shortest Paths & BFS Applications",
+    "conceptVideo": "https://www.youtube.com/watch?v=yf3qqGwg528",
+    "questions": [
+      {
+        "title": "Rotting Oranges",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/rotting-oranges/",
+        "video": "https://www.youtube.com/watch?v=yf3qqGwg528"
+      },
+      {
+        "title": "Shortest Path in Binary Matrix",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/shortest-path-in-binary-matrix/",
+        "video": "https://www.youtube.com/watch?v=CABaq96d3Zs"
+      },
+      {
+        "title": "Word Ladder",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/word-ladder/",
+        "video": "https://www.youtube.com/watch?v=tRPda0lAKLg"
+      }
+    ]
+  },
+  {
+    "day": 68,
+    "topic": "Dijkstra's Algorithm & MST Basics",
+    "conceptVideo": "https://www.youtube.com/watch?v=V6H1qAeB-l4",
+    "questions": [
+      {
+        "title": "Network Delay Time (Dijkstra)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/network-delay-time/",
+        "video": "https://www.youtube.com/watch?v=V6H1qAeB-l4"
+      },
+      {
+        "title": "Is Graph Bipartite?",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/is-graph-bipartite/",
+        "video": "https://www.youtube.com/watch?v=KG5YFfR0j8A"
+      },
+      {
+        "title": "Critical Connections in a Network (Bridges)",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/critical-connections-in-a-network/",
+        "video": "https://www.youtube.com/watch?v=qrAOKKw0s5o"
+      }
+    ]
+  },
+  {
+    "day": 69,
+    "topic": "Greedy Algorithms - Basics & Interval Choices",
+    "conceptVideo": "https://www.youtube.com/watch?v=DIX2pWw54E4",
+    "questions": [
+      {
+        "title": "Assign Cookies",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/assign-cookies/",
+        "video": "https://www.youtube.com/watch?v=DIX2pWw54E4"
+      },
+      {
+        "title": "Lemonade Change",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/lemonade-change/",
+        "video": "https://www.youtube.com/watch?v=n_tmIb8EPeA"
+      },
+      {
+        "title": "Jump Game I",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/jump-game/",
+        "video": "https://www.youtube.com/watch?v=tZAa_jJ3SwQ"
+      }
+    ]
+  },
+  {
+    "day": 70,
+    "topic": "Week 10 Consolidation - Graphs & Greedy",
+    "conceptVideo": "https://www.youtube.com/watch?v=M3_pLsDdeuU",
+    "questions": [
+      {
+        "title": "Number of Provinces",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/number-of-provinces/",
+        "video": "https://www.youtube.com/watch?v=ACzkVtewUYA"
+      },
+      {
+        "title": "Surrounded Regions",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/surrounded-regions/",
+        "video": "https://www.youtube.com/watch?v=BtdgAac40uc"
+      },
+      {
+        "title": "N Meetings in One Room",
+        "difficulty": "Easy",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=II6ziNscx7E"
+      }
+    ]
+  },
+  {
+    "day": 71,
+    "topic": "Greedy - Jumps & Gas Stations",
+    "conceptVideo": "https://www.youtube.com/watch?v=wL4044U54wA",
+    "questions": [
+      {
+        "title": "Jump Game II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/jump-game-ii/",
+        "video": "https://www.youtube.com/watch?v=wL4044U54wA"
+      },
+      {
+        "title": "Non-overlapping Intervals",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/non-overlapping-intervals/",
+        "video": "https://www.youtube.com/watch?v=HDnH8l9TWbc"
+      },
+      {
+        "title": "Gas Station",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/gas-station/",
+        "video": "https://www.youtube.com/watch?v=lJwbPZGo05A"
+      }
+    ]
+  },
+  {
+    "day": 72,
+    "topic": "Greedy - Master Classics for Interviews",
+    "conceptVideo": "https://www.youtube.com/watch?v=LjPx4wQaVIs",
+    "questions": [
+      {
+        "title": "Job Sequencing Problem",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=LjPx4wQaVIs"
+      },
+      {
+        "title": "Minimum Platforms for Trains",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=dxVcMDI7vyI"
+      },
+      {
+        "title": "Fractional Knapsack",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1",
+        "video": "https://www.youtube.com/watch?v=1ibsQrnuEEg"
+      }
+    ]
+  },
+  {
+    "day": 73,
+    "topic": "Dynamic Programming - 1D DP Intro & Fibonacci",
+    "conceptVideo": "https://www.youtube.com/watch?v=tyB0HAUfndw",
+    "questions": [
+      {
+        "title": "Climbing Stairs",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/climbing-stairs/",
+        "video": "https://www.youtube.com/watch?v=tyB0HAUfndw"
+      },
+      {
+        "title": "Min Cost Climbing Stairs",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/min-cost-climbing-stairs/",
+        "video": "https://www.youtube.com/watch?v=ktmzAZWkEZ0"
+      },
+      {
+        "title": "House Robber I",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/house-robber/",
+        "video": "https://www.youtube.com/watch?v=GrMBfJNk_vA"
+      }
+    ]
+  },
+  {
+    "day": 74,
+    "topic": "Dynamic Programming - 1D Array Variants",
+    "conceptVideo": "https://www.youtube.com/watch?v=3WaxQMbZ5hM",
+    "questions": [
+      {
+        "title": "House Robber II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/house-robber-ii/",
+        "video": "https://www.youtube.com/watch?v=3WaxQMbZ5hM"
+      },
+      {
+        "title": "Maximum Product Subarray",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/maximum-product-subarray/",
+        "video": "https://www.youtube.com/watch?v=lXVy6YWFcRM"
+      },
+      {
+        "title": "Palindrome Partitioning II",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/palindrome-partitioning-ii/",
+        "video": "https://www.youtube.com/watch?v=_H8V5hJUGd0"
+      }
+    ]
+  },
+  {
+    "day": 75,
+    "topic": "Dynamic Programming - 2D Grid DP",
+    "conceptVideo": "https://www.youtube.com/watch?v=sdE0A2Oxofw",
+    "questions": [
+      {
+        "title": "Unique Paths",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/unique-paths/",
+        "video": "https://www.youtube.com/watch?v=sdE0A2Oxofw"
+      },
+      {
+        "title": "Unique Paths II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/unique-paths-ii/",
+        "video": "https://www.youtube.com/watch?v=TmhzaIZ85RE"
+      },
+      {
+        "title": "Minimum Path Sum",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/minimum-path-sum/",
+        "video": "https://www.youtube.com/watch?v=_rgTlyky1uQ"
+      }
+    ]
+  },
+  {
+    "day": 76,
+    "topic": "Dynamic Programming - Subsets & 0/1 Knapsack",
+    "conceptVideo": "https://www.youtube.com/watch?v=fJbIuhsW4zQ",
+    "questions": [
+      {
+        "title": "Subset Sum Problem",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/subset-sum-problem2014/1",
+        "video": "https://www.youtube.com/watch?v=fJbIuhsW4zQ"
+      },
+      {
+        "title": "Partition Equal Subset Sum",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/partition-equal-subset-sum/",
+        "video": "https://www.youtube.com/watch?v=7win3dc73Vc"
+      },
+      {
+        "title": "0/1 Knapsack Problem",
+        "difficulty": "Medium",
+        "platform": "GeeksforGeeks",
+        "link": "https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1",
+        "video": "https://www.youtube.com/watch?v=GqOmJwancVw"
+      }
+    ]
+  },
+  {
+    "day": 77,
+    "topic": "Week 11 Consolidation - 1D & Grid DP",
+    "conceptVideo": "https://www.youtube.com/watch?v=sdE0A2Oxofw",
+    "questions": [
+      {
+        "title": "Triangle",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/triangle/",
+        "video": "https://www.youtube.com/watch?v=SrP-PiLSYC0"
+      },
+      {
+        "title": "Target Sum",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/target-sum/",
+        "video": "https://www.youtube.com/watch?v=b3GD8T54HGY"
+      },
+      {
+        "title": "Partition Array for Maximum Sum",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/partition-array-for-maximum-sum/",
+        "video": "https://www.youtube.com/watch?v=PhWWJmaKfMc"
+      }
+    ]
+  },
+  {
+    "day": 78,
+    "topic": "Dynamic Programming - Unbounded Knapsack & Coins",
+    "conceptVideo": "https://www.youtube.com/watch?v=myPeWb3Y68A",
+    "questions": [
+      {
+        "title": "Coin Change (Min Coins)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/coin-change/",
+        "video": "https://www.youtube.com/watch?v=myPeWb3Y68A"
+      },
+      {
+        "title": "Coin Change II (Total Ways)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/coin-change-ii/",
+        "video": "https://www.youtube.com/watch?v=HgyouUi11zk"
+      },
+      {
+        "title": "Burst Balloons",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/burst-balloons/",
+        "video": "https://www.youtube.com/watch?v=YzvF8CqPafI"
+      }
+    ]
+  },
+  {
+    "day": 79,
+    "topic": "Dynamic Programming - Strings & LCS",
+    "conceptVideo": "https://www.youtube.com/watch?v=NPZn9jBrX8U",
+    "questions": [
+      {
+        "title": "Longest Common Subsequence (LCS)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/longest-common-subsequence/",
+        "video": "https://www.youtube.com/watch?v=NPZn9jBrX8U"
+      },
+      {
+        "title": "Edit Distance",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/edit-distance/",
+        "video": "https://www.youtube.com/watch?v=fJaKO8FbDdo"
+      },
+      {
+        "title": "Distinct Subsequences",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/distinct-subsequences/",
+        "video": "https://www.youtube.com/watch?v=nVG7eTiD2bY"
+      }
+    ]
+  },
+  {
+    "day": 80,
+    "topic": "Dynamic Programming - String Palindromes & Wildcards",
+    "conceptVideo": "https://www.youtube.com/watch?v=6i_T5kkfu4U",
+    "questions": [
+      {
+        "title": "Longest Palindromic Substring",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/longest-palindromic-substring/",
+        "video": "https://www.youtube.com/watch?v=XYQecub60Ew"
+      },
+      {
+        "title": "Longest Palindromic Subsequence",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/longest-palindromic-subsequence/",
+        "video": "https://www.youtube.com/watch?v=6i_T5kkfu4U"
+      },
+      {
+        "title": "Wildcard Matching",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/wildcard-matching/",
+        "video": "https://www.youtube.com/watch?v=ZmlQ3vA2mJg"
+      }
+    ]
+  },
+  {
+    "day": 81,
+    "topic": "Dynamic Programming - Longest Increasing Subsequence",
+    "conceptVideo": "https://www.youtube.com/watch?v=ekcwVhLUGvk",
+    "questions": [
+      {
+        "title": "Longest Increasing Subsequence (LIS)",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/longest-increasing-subsequence/",
+        "video": "https://www.youtube.com/watch?v=ekcwVhLUGvk"
+      },
+      {
+        "title": "Number of Longest Increasing Subsequence",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/",
+        "video": "https://www.youtube.com/watch?v=cKVl1tfntjU"
+      },
+      {
+        "title": "Russian Doll Envelopes",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/russian-doll-envelopes/",
+        "video": "https://www.youtube.com/watch?v=ONoT8V9XkR8"
+      }
+    ]
+  },
+  {
+    "day": 82,
+    "topic": "Dynamic Programming - Stocks & Transactions",
+    "conceptVideo": "https://www.youtube.com/watch?v=nGJmxkVJQGs",
+    "questions": [
+      {
+        "title": "Best Time to Buy and Sell Stock II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/",
+        "video": "https://www.youtube.com/watch?v=nGJmxkVJQGs"
+      },
+      {
+        "title": "Best Time to Buy and Sell Stock III",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/",
+        "video": "https://www.youtube.com/watch?v=-uQGzhYj8BQ"
+      },
+      {
+        "title": "Best Time to Buy and Sell Stock with Cooldown",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/",
+        "video": "https://www.youtube.com/watch?v=IGIeG-0N1GY"
+      }
+    ]
+  },
+  {
+    "day": 83,
+    "topic": "TCS NQT Target Set 1 - Fundamentals & Math",
+    "conceptVideo": "https://www.youtube.com/watch?v=1xNbjMdbjug",
+    "questions": [
+      {
+        "title": "Factorial Trailing Zeroes",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/factorial-trailing-zeroes/",
+        "video": "https://www.youtube.com/watch?v=1xNbjMdbjug"
+      },
+      {
+        "title": "Move Zeroes to End",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/move-zeroes/",
+        "video": "https://www.youtube.com/watch?v=wvcQg43_V8U"
+      },
+      {
+        "title": "Matrix Diagonal Sum",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/matrix-diagonal-sum/",
+        "video": "https://www.youtube.com/watch?v=37E9ckMDdTk"
+      }
+    ]
+  },
+  {
+    "day": 84,
+    "topic": "Week 12 Consolidation - High Frequency Master Review",
+    "conceptVideo": "https://www.youtube.com/watch?v=tyB0HAUfndw",
+    "questions": [
+      {
+        "title": "Word Break",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/word-break/",
+        "video": "https://www.youtube.com/watch?v=Sx9NNgInc3A"
+      },
+      {
+        "title": "Coin Change",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/coin-change/",
+        "video": "https://www.youtube.com/watch?v=myPeWb3Y68A"
+      },
+      {
+        "title": "Network Delay Time",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/network-delay-time/",
+        "video": "https://www.youtube.com/watch?v=V6H1qAeB-l4"
+      }
+    ]
+  },
+  {
+    "day": 85,
+    "topic": "TCS Digital / Prime Set 2 - Strings & Hashing",
+    "conceptVideo": "https://www.youtube.com/watch?v=vqd68v2K9b8",
+    "questions": [
+      {
+        "title": "Group Anagrams",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/group-anagrams/",
+        "video": "https://www.youtube.com/watch?v=vqd68v2K9b8"
+      },
+      {
+        "title": "Subarray Sum Equals K",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/subarray-sum-equals-k/",
+        "video": "https://www.youtube.com/watch?v=xvN16wAGEHI"
+      },
+      {
+        "title": "Longest Substring Without Repeating Characters",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+        "video": "https://www.youtube.com/watch?v=wiGpQwVHdE0"
+      }
+    ]
+  },
+  {
+    "day": 86,
+    "topic": "Infosys InfyTQ / Specialist Set 1 - Grid & Graphs",
+    "conceptVideo": "https://www.youtube.com/watch?v=mW6hFysm_dE",
+    "questions": [
+      {
+        "title": "Minimum Path Sum in Grid",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/minimum-path-sum/",
+        "video": "https://www.youtube.com/watch?v=_rgTlyky1uQ"
+      },
+      {
+        "title": "Number of Islands",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/number-of-islands/",
+        "video": "https://www.youtube.com/watch?v=mW6hFysm_dE"
+      },
+      {
+        "title": "Course Schedule II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/course-schedule-ii/",
+        "video": "https://www.youtube.com/watch?v=Qqgck2ijUjU"
+      }
+    ]
+  },
+  {
+    "day": 87,
+    "topic": "HashedIn Target Set 1 - Monotonic Stack & Sliding Window",
+    "conceptVideo": "https://www.youtube.com/watch?v=ZI2z5-0zi0w",
+    "questions": [
+      {
+        "title": "Trapping Rain Water",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/trapping-rain-water/",
+        "video": "https://www.youtube.com/watch?v=ZI2z5-0zi0w"
+      },
+      {
+        "title": "Sliding Window Maximum",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/sliding-window-maximum/",
+        "video": "https://www.youtube.com/watch?v=CZQGRp93K4g"
+      },
+      {
+        "title": "Next Greater Element II",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/next-greater-element-ii/",
+        "video": "https://www.youtube.com/watch?v=7PrncD7v9YQ"
+      }
+    ]
+  },
+  {
+    "day": 88,
+    "topic": "Timed Mock 1 - TCS/Infosys Speed Round (60 Mins)",
+    "conceptVideo": "https://www.youtube.com/watch?v=UXDSeD9mN-k",
+    "questions": [
+      {
+        "title": "Two Sum",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/two-sum/",
+        "video": "https://www.youtube.com/watch?v=UXDSeD9mN-k"
+      },
+      {
+        "title": "Valid Parentheses",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/valid-parentheses/",
+        "video": "https://www.youtube.com/watch?v=wkDfsKijrZ8"
+      },
+      {
+        "title": "Merge Intervals",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/merge-intervals/",
+        "video": "https://www.youtube.com/watch?v=2JzRBPFYbKE"
+      }
+    ]
+  },
+  {
+    "day": 89,
+    "topic": "Timed Mock 2 - Specialist / Prime Level Round (60 Mins)",
+    "conceptVideo": "https://www.youtube.com/watch?v=frf7704xS78",
+    "questions": [
+      {
+        "title": "Product of Array Except Self",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/product-of-array-except-self/",
+        "video": "https://www.youtube.com/watch?v=frf7704xS78"
+      },
+      {
+        "title": "Course Schedule",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/course-schedule/",
+        "video": "https://www.youtube.com/watch?v=WAOfKpxYHR8"
+      },
+      {
+        "title": "Coin Change",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/coin-change/",
+        "video": "https://www.youtube.com/watch?v=myPeWb3Y68A"
+      }
+    ]
+  },
+  {
+    "day": 90,
+    "topic": "Grand Finale & High Frequency Company Checklist",
+    "conceptVideo": "https://www.youtube.com/watch?v=D2vI2DNJGd8",
+    "questions": [
+      {
+        "title": "Reverse Linked List",
+        "difficulty": "Easy",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/reverse-linked-list/",
+        "video": "https://www.youtube.com/watch?v=D2vI2DNJGd8"
+      },
+      {
+        "title": "Lowest Common Ancestor of a Binary Tree",
+        "difficulty": "Medium",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/",
+        "video": "https://www.youtube.com/watch?v=_-gJ425EGwA"
+      },
+      {
+        "title": "LRU Cache",
+        "difficulty": "Hard",
+        "platform": "LeetCode",
+        "link": "https://leetcode.com/problems/lru-cache/",
+        "video": "https://www.youtube.com/watch?v=xDEuM5qa0zg"
+      }
+    ]
+  }
+];
+
+// LOCAL STORAGE STATE LOGIC
+const STORAGE_KEY = 'dsa_sprint_tracker_state_v1';
+
+function getInitialState() {
+  return {
+    solved: {},
+    starred: {},
+    notes: {},
+    startDate: '',
+    theme: 'dark',
+    bestStreak: 0
+  };
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return getInitialState();
+    return Object.assign(getInitialState(), JSON.parse(raw));
+  } catch (e) {
+    console.error("Failed to load state from localStorage:", e);
+    return getInitialState();
+  }
+}
+
+function saveState(state) {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {
+    console.error("Failed to save state to localStorage:", e);
+  }
+}
+
+let appState = loadState();
+
+// INITIALIZATION
+document.addEventListener('DOMContentLoaded', () => {
+  applyTheme(appState.theme || 'dark');
+  renderDashboard();
+  renderDays();
+});
+
+// THEME TOGGLE
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const btn = document.getElementById('themeToggleBtn');
+  if (btn) {
+    btn.innerHTML = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+  }
+  appState.theme = theme;
+  saveState(appState);
+}
+
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+// DASHBOARD COMPUTATION & RENDER
+function renderDashboard() {
+  let totalSolved = 0;
+  let completedDays = 0;
+  let easySolved = 0;
+  let mediumSolved = 0;
+  let hardSolved = 0;
+  let starredTotal = 0;
+
+  let totalEasy = 0;
+  let totalMedium = 0;
+  let totalHard = 0;
+
+  const completedDayMap = {};
+
+  SPRINT_DATA.forEach((d) => {
+    let daySolvedCount = 0;
+    d.questions.forEach((q, qIdx) => {
+      const qKey = `${d.day}_${qIdx}`;
+      
+      if (q.difficulty === 'Easy') totalEasy++;
+      if (q.difficulty === 'Medium') totalMedium++;
+      if (q.difficulty === 'Hard') totalHard++;
+
+      if (appState.solved[qKey]) {
+        totalSolved++;
+        daySolvedCount++;
+        if (q.difficulty === 'Easy') easySolved++;
+        if (q.difficulty === 'Medium') mediumSolved++;
+        if (q.difficulty === 'Hard') hardSolved++;
+      }
+
+      if (appState.starred[qKey]) {
+        starredTotal++;
+      }
+    });
+
+    if (daySolvedCount === 3) {
+      completedDays++;
+      completedDayMap[d.day] = true;
+    }
+  });
+
+  // Calculate Streaks
+  let currentStreak = 0;
+  let maxStreak = appState.bestStreak || 0;
+  let currentTemp = 0;
+
+  for (let i = 1; i <= 90; i++) {
+    if (completedDayMap[i]) {
+      currentTemp++;
+      if (currentTemp > maxStreak) maxStreak = currentTemp;
+    } else {
+      currentTemp = 0;
+    }
+  }
+
+  // Calculate Current Streak up to Today if Start Date is set
+  let todayDayNumber = null;
+  if (appState.startDate) {
+    const start = new Date(appState.startDate);
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    start.setHours(0,0,0,0);
+    const diffTime = today - start;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
+    if (diffDays >= 1 && diffDays <= 90) {
+      todayDayNumber = diffDays;
+    }
+  }
+
+  if (todayDayNumber) {
+    let c = 0;
+    for (let d = todayDayNumber; d >= 1; d--) {
+      if (completedDayMap[d]) c++;
+      else break;
+    }
+    currentStreak = c;
+  } else {
+    currentStreak = currentTemp;
+  }
+
+  if (currentStreak > maxStreak) maxStreak = currentStreak;
+  appState.bestStreak = maxStreak;
+  saveState(appState);
+
+  // Update DOM
+  document.getElementById('solvedCount').innerText = totalSolved;
+  const overallPct = ((totalSolved / 270) * 100).toFixed(1);
+  document.getElementById('overallPercent').innerText = `${overallPct}%`;
+  document.getElementById('overallProgressBar').style.width = `${overallPct}%`;
+
+  document.getElementById('completedDaysCount').innerText = completedDays;
+  const daysPct = ((completedDays / 90) * 100).toFixed(1);
+  document.getElementById('daysProgressBar').style.width = `${daysPct}%`;
+
+  document.getElementById('currentStreak').innerText = currentStreak;
+  document.getElementById('bestStreak').innerText = maxStreak;
+
+  document.getElementById('easySolvedCount').innerText = `${easySolved} / ${totalEasy}`;
+  document.getElementById('mediumSolvedCount').innerText = `${mediumSolved} / ${totalMedium}`;
+  document.getElementById('hardSolvedCount').innerText = `${hardSolved} / ${totalHard}`;
+
+  document.getElementById('revisitCount').innerText = `⭐ ${starredTotal} Revisit`;
+
+  const statusEl = document.getElementById('sprintDayStatus');
+  if (todayDayNumber) {
+    statusEl.innerHTML = `Today is <strong>Day ${todayDayNumber}</strong> of your sprint (${appState.startDate})`;
+  } else if (appState.startDate) {
+    statusEl.innerHTML = `Sprint started on ${appState.startDate}`;
+  } else {
+    statusEl.innerHTML = `Start date not set (click 'Set Start Date')`;
+  }
+}
+
+// RENDER DAY CARDS
+function renderDays() {
+  const container = document.getElementById('daysList');
+  const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+  const diffVal = document.getElementById('difficultyFilter').value;
+  const statusVal = document.getElementById('statusFilter').value;
+  const topicVal = document.getElementById('topicFilter').value;
+
+  container.innerHTML = '';
+
+  let todayDayNumber = null;
+  if (appState.startDate) {
+    const start = new Date(appState.startDate);
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    start.setHours(0,0,0,0);
+    const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1;
+    if (diffDays >= 1 && diffDays <= 90) todayDayNumber = diffDays;
+  }
+
+  let visibleCardsCount = 0;
+
+  SPRINT_DATA.forEach((d) => {
+    // Phase Filter Matching
+    if (topicVal !== 'ALL') {
+      const pNum = parseInt(topicVal.replace('P', ''));
+      let minDay = 1, maxDay = 7;
+      if (pNum === 1) { minDay = 1; maxDay = 7; }
+      else if (pNum === 2) { minDay = 8; maxDay = 20; }
+      else if (pNum === 3) { minDay = 21; maxDay = 30; }
+      else if (pNum === 4) { minDay = 31; maxDay = 40; }
+      else if (pNum === 5) { minDay = 41; maxDay = 50; }
+      else if (pNum === 6) { minDay = 51; maxDay = 62; }
+      else if (pNum === 7) { minDay = 63; maxDay = 72; }
+      else if (pNum === 8) { minDay = 73; maxDay = 82; }
+      else if (pNum === 9) { minDay = 83; maxDay = 90; }
+      if (d.day < minDay || d.day > maxDay) return;
+    }
+
+    // Filter questions inside day
+    let matchingQuestions = d.questions.filter((q, qIdx) => {
+      const qKey = `${d.day}_${qIdx}`;
+      const isSolved = !!appState.solved[qKey];
+      const isStarred = !!appState.starred[qKey];
+      const noteText = (appState.notes[qKey] || '').toLowerCase();
+
+      // Difficulty Filter
+      if (diffVal !== 'ALL' && q.difficulty !== diffVal) return false;
+
+      // Status Filter
+      if (statusVal === 'DONE' && !isSolved) return false;
+      if (statusVal === 'PENDING' && isSolved) return false;
+      if (statusVal === 'REVISIT' && !isStarred) return false;
+
+      // Search Filter
+      if (searchVal) {
+        const titleMatches = q.title.toLowerCase().includes(searchVal);
+        const topicMatches = d.topic.toLowerCase().includes(searchVal);
+        const noteMatches = noteText.includes(searchVal);
+        if (!titleMatches && !topicMatches && !noteMatches) return false;
+      }
+
+      return true;
+    });
+
+    if (matchingQuestions.length === 0) return;
+
+    visibleCardsCount++;
+
+    // Calculate Day Completion State
+    let solvedInDay = 0;
+    d.questions.forEach((q, qIdx) => {
+      if (appState.solved[`${d.day}_${qIdx}`]) solvedInDay++;
+    });
+    const isDayCompleted = solvedInDay === 3;
+    const isRevisionDay = d.day % 7 === 0;
+    const isToday = todayDayNumber === d.day;
+
+    const card = document.createElement('div');
+    card.className = `day-card ${isDayCompleted ? 'day-completed' : ''} ${isToday ? 'today-highlight' : ''}`;
+    card.id = `day-card-${d.day}`;
+
+    let questionsHtml = '';
+    d.questions.forEach((q, qIdx) => {
+      const qKey = `${d.day}_${qIdx}`;
+      const isSolved = !!appState.solved[qKey];
+      const isStarred = !!appState.starred[qKey];
+      const noteVal = appState.notes[qKey] || '';
+
+      // Check if question passed filter
+      if (!matchingQuestions.includes(q)) return;
+
+      questionsHtml += `
+        <div class="question-row ${isSolved ? 'solved' : ''}">
+          <div class="question-main">
+            <div class="question-left">
+              <div class="custom-checkbox ${isSolved ? 'checked' : ''}" onclick="toggleSolve(${d.day}, ${qIdx})">
+                ${isSolved ? '✓' : ''}
+              </div>
+              <button class="star-btn ${isStarred ? 'starred' : ''}" onclick="toggleStar(${d.day}, ${qIdx})" title="Toggle Revisit Star">
+                ${isStarred ? '⭐' : '☆'}
+              </button>
+              <span class="question-title">${escapeHtml(q.title)}</span>
+            </div>
+            <div class="question-right">
+              <span class="badge badge-${q.difficulty.toLowerCase()}">${q.difficulty}</span>
+              <span class="badge badge-platform">${q.platform}</span>
+              <a href="${q.link}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">🧩 Solve</a>
+              <a href="${q.video}" target="_blank" rel="noopener" class="btn btn-sm">🎬 Watch</a>
+              <button class="btn btn-sm" onclick="toggleNotesUI('${qKey}')">📝 Notes</button>
+            </div>
+          </div>
+          <div class="notes-container" id="notes-container-${qKey}" style="${noteVal ? 'display:block;' : ''}">
+            <textarea class="notes-textarea" placeholder="Add your code notes, key trick, or O(N) space/time logic..." oninput="updateNote('${qKey}', this.value)">${escapeHtml(noteVal)}</textarea>
+          </div>
+        </div>
+      `;
+    });
+
+    card.innerHTML = `
+      <div class="day-header">
+        <div class="day-title-area">
+          <span class="day-badge">Day ${d.day}</span>
+          <span class="day-topic">${escapeHtml(d.topic)}</span>
+          ${isRevisionDay ? '<span class="revision-tag">🔄 Consolidation & Revision</span>' : ''}
+          ${isToday ? '<span class="revision-tag" style="background:var(--accent-success-bg); color:var(--accent-success);">🎯 TODAY</span>' : ''}
+        </div>
+        <div class="day-meta">
+          <a href="${d.conceptVideo}" target="_blank" rel="noopener" class="btn btn-sm">📹 Concept Video</a>
+          <span class="status-badge ${isDayCompleted ? 'complete' : 'pending'}">
+            ${isDayCompleted ? '✅ Day Complete (3/3)' : `${solvedInDay}/3 Done` }
+          </span>
+        </div>
+      </div>
+      <div class="questions-list">
+        ${questionsHtml}
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  if (visibleCardsCount === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <h3>🔍 No matching days found</h3>
+        <p>Try adjusting your search criteria or resetting filters.</p>
+      </div>
+    `;
+  }
+}
+
+// ACTION HANDLERS
+function toggleSolve(day, qIdx) {
+  const qKey = `${day}_${qIdx}`;
+  appState.solved[qKey] = !appState.solved[qKey];
+  saveState(appState);
+  renderDashboard();
+  renderDays();
+}
+
+function toggleStar(day, qIdx) {
+  const qKey = `${day}_${qIdx}`;
+  appState.starred[qKey] = !appState.starred[qKey];
+  saveState(appState);
+  renderDashboard();
+  renderDays();
+}
+
+function toggleNotesUI(qKey) {
+  const el = document.getElementById(`notes-container-${qKey}`);
+  if (el) {
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+}
+
+function updateNote(qKey, val) {
+  appState.notes[qKey] = val;
+  saveState(appState);
+}
+
+function expandAllNotes() {
+  document.querySelectorAll('.notes-container').forEach(el => el.style.display = 'block');
+}
+
+function collapseAllNotes() {
+  document.querySelectorAll('.notes-container').forEach(el => el.style.display = 'none');
+}
+
+// START DATE MODAL & JUMP TO TODAY
+function openStartDateModal() {
+  document.getElementById('startDateInput').value = appState.startDate || new Date().toISOString().split('T')[0];
+  document.getElementById('startDateModal').classList.add('active');
+}
+
+function closeStartDateModal() {
+  document.getElementById('startDateModal').classList.remove('active');
+}
+
+function saveStartDate() {
+  const val = document.getElementById('startDateInput').value;
+  appState.startDate = val;
+  saveState(appState);
+  closeStartDateModal();
+  renderDashboard();
+  renderDays();
+}
+
+function jumpToToday() {
+  if (!appState.startDate) {
+    openStartDateModal();
+    return;
+  }
+  const start = new Date(appState.startDate);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  start.setHours(0,0,0,0);
+  const diffDays = Math.floor((today - start) / (1000 * 60 * 60 * 24)) + 1;
+  const targetDay = Math.max(1, Math.min(90, diffDays));
+
+  // Reset filters to show target day if hidden
+  document.getElementById('searchInput').value = '';
+  document.getElementById('difficultyFilter').value = 'ALL';
+  document.getElementById('statusFilter').value = 'ALL';
+  document.getElementById('topicFilter').value = 'ALL';
+  renderDays();
+
+  const card = document.getElementById(`day-card-${targetDay}`);
+  if (card) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.add('today-highlight');
+  }
+}
+
+// IMPORT / EXPORT / RESET
+function exportJSON() {
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(appState, null, 2));
+  const downloadAnchor = document.createElement('a');
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", `dsa_sprint_progress_${new Date().toISOString().split('T')[0]}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+}
+
+function triggerImport() {
+  document.getElementById('importFileInput').click();
+}
+
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (imported && typeof imported === 'object') {
+        appState = Object.assign(getInitialState(), imported);
+        saveState(appState);
+        applyTheme(appState.theme || 'dark');
+        renderDashboard();
+        renderDays();
+        alert('✅ Progress imported successfully!');
+      } else {
+        alert('❌ Invalid JSON format.');
+      }
+    } catch (err) {
+      alert('❌ Failed to parse JSON file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function confirmReset() {
+  document.getElementById('resetModal').classList.add('active');
+}
+
+function closeResetModal() {
+  document.getElementById('resetModal').classList.remove('active');
+}
+
+function executeReset() {
+  appState = getInitialState();
+  saveState(appState);
+  closeResetModal();
+  renderDashboard();
+  renderDays();
+}
+
+// UTILS
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+}
+</script>
+</body>
+</html>
