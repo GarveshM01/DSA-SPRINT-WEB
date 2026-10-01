@@ -3880,687 +3880,670 @@ function escapeHtml(str) {
 // ============================================================
 const FOUNDATION = [
   {
-    section: "Java Refresher",
-    startDay: 1,
-    prerequisiteNote: "Before diving into DSA, make sure you can write Java methods, use loops, and understand how arrays are declared. These micro-drills cement your Java syntax muscle memory.",
-    videoSearchQuery: "Java basics DSA hinglish",
-    questions: [
+    "section": "Java Refresher",
+    "startDay": 1,
+    "prerequisiteNote": "Before diving into DSA, make sure you can write Java methods, use loops, and understand how variables & conditions work. These micro-drills cement your Java syntax muscle memory.",
+    "videoSearchQuery": "Java basics DSA hinglish",
+    "questions": [
       {
-        title: "Print numbers 1 to N",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Write a method that prints all integers from 1 to N (inclusive).",
-        samples: "Input: N=5\nOutput: 1 2 3 4 5"
+        "title": "Convert the Temperature",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "convert-the-temperature"
       },
       {
-        title: "Even or Odd",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given an integer N, print 'Even' if it is even, else print 'Odd'.",
-        samples: "Input: 4 → Output: Even\nInput: 7 → Output: Odd"
+        "title": "Divisible and Non-divisible Sums Difference",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "divisible-and-non-divisible-sums-difference"
       },
       {
-        title: "Sum of 1 to N",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Compute the sum of all integers from 1 to N using a loop.",
-        samples: "Input: N=5\nOutput: 15"
+        "title": "Subtract the Product and Sum of Digits of an Integer",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "subtract-the-product-and-sum-of-digits-of-an-integer"
       },
       {
-        title: "Factorial of N",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return N! (factorial). Assume N ≥ 0. Return 1 for N=0.",
-        samples: "Input: 5 → Output: 120\nInput: 0 → Output: 1"
+        "title": "Number of Steps to Reduce a Number to Zero",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "number-of-steps-to-reduce-a-number-to-zero"
       },
       {
-        title: "Count digits in a number",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given a positive integer N, count how many digits it has without converting to String.",
-        samples: "Input: 1234 → Output: 4\nInput: 7 → Output: 1"
+        "title": "Fizz Buzz",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "fizz-buzz"
       },
       {
-        title: "Multiplication table",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Print the multiplication table of N up to 10 rows (e.g., N×1, N×2, … N×10).",
-        samples: "Input: 3\nOutput: 3 6 9 12 15 18 21 24 27 30"
+        "title": "Print Numbers 1 to N",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer N, write a function to print all integers from 1 up to N separated by spaces.",
+        "samples": "Sample 1:\nInput: N = 5\nOutput: 1 2 3 4 5\nExplanation: Loop runs from i = 1 to 5.\n\nSample 2:\nInput: N = 1\nOutput: 1\nExplanation: Only 1 is printed."
       },
       {
-        title: "Swap two variables",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Swap values of a and b without using a third variable. Print both after swapping.",
-        samples: "Input: a=2, b=5 → Output: a=5 b=2"
+        "title": "Even or Odd Check",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer N, check whether it is even or odd. Print 'Even' if N % 2 == 0, else print 'Odd'.",
+        "samples": "Sample 1:\nInput: N = 4\nOutput: Even\nExplanation: 4 is divisible by 2.\n\nSample 2:\nInput: N = 7\nOutput: Odd\nExplanation: 7 leaves remainder 1 when divided by 2."
       },
       {
-        title: "Check prime number",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given N, return true if it is prime, false otherwise. Use a loop up to √N.",
-        samples: "Input: 7 → true\nInput: 9 → false"
+        "title": "Swap Two Variables",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given two integers a and b, swap their values without using a third variable. Print updated values of a and b.",
+        "samples": "Sample 1:\nInput: a = 5, b = 10\nOutput: a = 10, b = 5\nExplanation: Values interchanged using arithmetic (a = a + b; b = a - b; a = a - b).\n\nSample 2:\nInput: a = -3, b = 8\nOutput: a = 8, b = -3\nExplanation: Values swapped successfully."
       },
       {
-        title: "FizzBuzz",
-        difficulty: "Easy",
-        type: "link",
-        slug: "fizz-buzz"
+        "title": "Multiplication Table",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer N, print its multiplication table from N x 1 up to N x 10, with values space-separated.",
+        "samples": "Sample 1:\nInput: N = 3\nOutput: 3 6 9 12 15 18 21 24 27 30\nExplanation: 3*1=3, 3*2=6, ..., 3*10=30.\n\nSample 2:\nInput: N = 7\nOutput: 7 14 21 28 35 42 49 56 63 70\nExplanation: Multiples of 7 from 1 to 10."
       }
     ]
   },
   {
-    section: "Arrays",
-    startDay: 8,
-    prerequisiteNote: "Arrays start here! You need to be comfortable with index-based loops, swapping elements, and accumulating a running value before tackling real array problems.",
-    videoSearchQuery: "Arrays introduction DSA hinglish",
-    questions: [
+    "section": "Arrays",
+    "startDay": 8,
+    "prerequisiteNote": "Arrays start here! You need to be comfortable with index-based loops, element traversal, extremes tracking, and element manipulation before tackling real array problems.",
+    "videoSearchQuery": "Arrays introduction DSA hinglish",
+    "questions": [
       {
-        title: "Traverse and print array",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given an integer array, print all elements separated by spaces.",
-        samples: "Input: [3,1,4,1,5]\nOutput: 3 1 4 1 5"
+        "title": "Concatenation of Array",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "concatenation-of-array"
       },
       {
-        title: "Sum of array elements",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return the sum of all elements in an integer array.",
-        samples: "Input: [1,2,3,4] → Output: 10"
+        "title": "Build Array from Permutation",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "build-array-from-permutation"
       },
       {
-        title: "Find maximum element",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return the maximum element in a non-empty integer array.",
-        samples: "Input: [3,1,7,2] → Output: 7"
+        "title": "Richest Customer Wealth",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "richest-customer-wealth"
       },
       {
-        title: "Find minimum element",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return the minimum element in a non-empty integer array.",
-        samples: "Input: [3,1,7,2] → Output: 1"
+        "title": "Shuffle the Array",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "shuffle-the-array"
       },
       {
-        title: "Reverse an array",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Reverse the array in-place using two pointers and print the result.",
-        samples: "Input: [1,2,3,4,5]\nOutput: [5,4,3,2,1]"
+        "title": "Traverse and Print Array",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr of size N, write a function to iterate through the array and print all elements separated by spaces.",
+        "samples": "Sample 1:\nInput: arr = [3, 1, 4, 1, 5]\nOutput: 3 1 4 1 5\nExplanation: Elements printed in index order from 0 to 4.\n\nSample 2:\nInput: arr = [10]\nOutput: 10\nExplanation: Single element array printed as is."
       },
       {
-        title: "Count even and odd numbers",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given an integer array, print the count of even numbers and odd numbers.",
-        samples: "Input: [1,2,3,4,5]\nOutput: Even=2 Odd=3"
+        "title": "Sum of Array Elements",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr of size N, return the sum of all elements present in the array.",
+        "samples": "Sample 1:\nInput: arr = [1, 2, 3, 4]\nOutput: 10\nExplanation: 1 + 2 + 3 + 4 = 10.\n\nSample 2:\nInput: arr = [-5, 5, 10]\nOutput: 10\nExplanation: -5 + 5 + 10 = 10."
       },
       {
-        title: "Linear search",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return the first index of target in the array, or -1 if not found.",
-        samples: "Input: arr=[4,2,9,7], target=9 → Output: 2\nInput: target=5 → Output: -1"
+        "title": "Find Maximum and Minimum Element",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a non-empty integer array arr of size N, find and print the maximum and minimum values in the array.",
+        "samples": "Sample 1:\nInput: arr = [3, 1, 7, 2, 5]\nOutput: Max = 7, Min = 1\nExplanation: 7 is the largest element, 1 is the smallest.\n\nSample 2:\nInput: arr = [-2, -8, -1]\nOutput: Max = -1, Min = -8\nExplanation: -1 is maximum among negative values, -8 is minimum."
       },
       {
-        title: "Check if array is sorted",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return true if the array is non-decreasingly sorted, false otherwise.",
-        samples: "Input: [1,2,3,3,5] → true\nInput: [1,3,2] → false"
+        "title": "Reverse an Array In-Place",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr of size N, reverse the array in-place using two pointers and print the reversed array.",
+        "samples": "Sample 1:\nInput: arr = [1, 2, 3, 4, 5]\nOutput: [5, 4, 3, 2, 1]\nExplanation: First and last swapped, 2nd and 4th swapped.\n\nSample 2:\nInput: arr = [10, 20]\nOutput: [20, 10]\nExplanation: Two elements swapped."
       },
       {
-        title: "Running Sum of 1d Array",
-        difficulty: "Easy",
-        type: "link",
-        slug: "running-sum-of-1d-array"
+        "title": "Linear Search in Array",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr and a target value K, return the 0-based index of the first occurrence of K. If K is not present in arr, return -1.",
+        "samples": "Sample 1:\nInput: arr = [4, 2, 9, 7, 2], K = 9\nOutput: 2\nExplanation: Element 9 is found at index 2.\n\nSample 2:\nInput: arr = [1, 3, 5], K = 8\nOutput: -1\nExplanation: Element 8 is not present in the array."
       }
     ]
   },
   {
-    section: "Strings",
-    startDay: 15,
-    prerequisiteNote: "Strings in Java are immutable char sequences. You must be fluent with charAt(), length(), loops over characters, and building a result with StringBuilder before string problems make sense.",
-    videoSearchQuery: "Strings in Java DSA hinglish",
-    questions: [
+    "section": "Strings",
+    "startDay": 15,
+    "prerequisiteNote": "Strings in Java are immutable char sequences. You must be fluent with charAt(), length(), character loops, and string inspection before string problems make sense.",
+    "videoSearchQuery": "Strings in Java DSA hinglish",
+    "questions": [
       {
-        title: "Print length and each character",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given a string, print its length, then print each character on a new line using charAt().",
-        samples: "Input: \"hello\"\nOutput: 5\nh e l l o"
+        "title": "Defanging an IP Address",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "defanging-an-ip-address"
       },
       {
-        title: "Reverse a string",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return the reverse of the input string (without using StringBuilder.reverse()).",
-        samples: "Input: \"abcd\" → Output: \"dcba\""
+        "title": "Score of a String",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "score-of-a-string"
       },
       {
-        title: "Count vowels",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Count the number of vowels (a,e,i,o,u — both cases) in the given string.",
-        samples: "Input: \"Hello World\" → Output: 3"
+        "title": "To Lower Case",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "to-lower-case"
       },
       {
-        title: "Check palindrome (simple)",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return true if the string reads the same forwards and backwards (case-sensitive, ignore spaces not required).",
-        samples: "Input: \"racecar\" → true\nInput: \"hello\" → false"
+        "title": "Find the Index of the First Occurrence in a String",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "find-the-index-of-the-first-occurrence-in-a-string"
       },
       {
-        title: "Character frequency array",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given a lowercase string, print each character that appears in it along with its count.",
-        samples: "Input: \"aabbc\" → a:2 b:2 c:1"
+        "title": "Print Length and Characters",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a string S, print its length first, then print each character on a new line using a charAt() loop.",
+        "samples": "Sample 1:\nInput: S = \"Code\"\nOutput:\nLength: 4\nC\no\nd\ne\nExplanation: String has 4 characters printed line by line.\n\nSample 2:\nInput: S = \"A\"\nOutput:\nLength: 1\nA\nExplanation: Single character string."
       },
       {
-        title: "Convert to uppercase without library",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Convert all lowercase letters to uppercase by subtracting 32 from their ASCII value. Print the result.",
-        samples: "Input: \"hello\" → Output: \"HELLO\""
+        "title": "Reverse a String",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a string S, return a new string with its characters in reverse order without using built-in string reverse methods.",
+        "samples": "Sample 1:\nInput: S = \"hello\"\nOutput: \"olleh\"\nExplanation: Characters reversed from index length-1 to 0.\n\nSample 2:\nInput: S = \"Java\"\nOutput: \"avaJ\"\nExplanation: Original 'J' moves to the end."
       },
       {
-        title: "Compare two strings",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Without using .equals(), compare two strings character by character. Print 'Same' or 'Different'.",
-        samples: "Input: \"abc\", \"abc\" → Same\nInput: \"abc\", \"ab\" → Different"
+        "title": "Count Vowels in String",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a string S, count and return the total number of vowels (a, e, i, o, u, case-insensitive) present in S.",
+        "samples": "Sample 1:\nInput: S = \"Hello World\"\nOutput: 3\nExplanation: Vowels are 'e', 'o', 'o'.\n\nSample 2:\nInput: S = \"xyz\"\nOutput: 0\nExplanation: No vowels present."
       },
       {
-        title: "Find the Index of the First Occurrence in a String",
-        difficulty: "Easy",
-        type: "link",
-        slug: "find-the-index-of-the-first-occurrence-in-a-string"
+        "title": "Check Palindrome String",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a string S, check if it reads the same forward and backward. Return true if it is a palindrome, otherwise return false.",
+        "samples": "Sample 1:\nInput: S = \"racecar\"\nOutput: true\nExplanation: \"racecar\" reversed is \"racecar\".\n\nSample 2:\nInput: S = \"hello\"\nOutput: false\nExplanation: \"hello\" reversed is \"olleh\", which is different."
       },
       {
-        title: "To Lower Case",
-        difficulty: "Easy",
-        type: "link",
-        slug: "to-lower-case"
+        "title": "Character Frequency Array",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a string S containing lowercase English letters, compute the frequency of each character using a frequency array of size 26 and print non-zero counts.",
+        "samples": "Sample 1:\nInput: S = \"aabbc\"\nOutput: a: 2, b: 2, c: 1\nExplanation: 'a' appears 2 times, 'b' 2 times, 'c' 1 time.\n\nSample 2:\nInput: S = \"z\"\nOutput: z: 1\nExplanation: Only 'z' appears with count 1."
       }
     ]
   },
   {
-    section: "Hashing",
-    startDay: 21,
-    prerequisiteNote: "Hashing uses HashMap and HashSet to achieve O(1) lookups. Before you tackle hashing problems you must know how to put/get in a HashMap and add/contains in a HashSet.",
-    videoSearchQuery: "HashMap HashSet Java DSA hinglish",
-    questions: [
+    "section": "Hashing",
+    "startDay": 21,
+    "prerequisiteNote": "Hashing uses HashMap and HashSet to achieve O(1) average lookups. Before tackling hashing problems, master put/get operations and membership checking.",
+    "videoSearchQuery": "HashMap HashSet Java DSA hinglish",
+    "questions": [
       {
-        title: "Count frequency with HashMap",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given an integer array, use a HashMap to count how many times each element appears. Print each element and its count.",
-        samples: "Input: [1,2,2,3,3,3]\nOutput: 1→1, 2→2, 3→3"
+        "title": "Jewels and Stones",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "jewels-and-stones"
       },
       {
-        title: "Check if element exists in HashSet",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Add all elements of array A to a HashSet. Then for each query in array B, print true/false based on membership.",
-        samples: "Input: A=[1,2,3], B=[2,5]\nOutput: true false"
+        "title": "Word Pattern",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "word-pattern"
       },
       {
-        title: "Count distinct elements",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return the number of distinct elements in the array.",
-        samples: "Input: [1,2,2,3,4,4] → Output: 4"
+        "title": "Happy Number",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "happy-number"
       },
       {
-        title: "First non-repeating element",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Find the first element in the array that appears exactly once. Return -1 if none.",
-        samples: "Input: [4,5,4,6] → Output: 5\nInput: [1,1,2,2] → Output: -1"
+        "title": "Unique Number of Occurrences",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "unique-number-of-occurrences"
       },
       {
-        title: "Check if two arrays are identical sets",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return true if both arrays contain exactly the same set of distinct values (order doesn't matter).",
-        samples: "Input: [1,2,3], [3,1,2] → true\nInput: [1,2], [1,3] → false"
+        "title": "Check if the Sentence Is Pangram",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "check-if-the-sentence-is-pangram"
       },
       {
-        title: "Group elements by frequency bucket",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Using a HashMap, print all elements that appear more than once.",
-        samples: "Input: [1,2,2,3,3,3] → Output: 2 3"
+        "title": "Count Frequency with HashMap",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr of size N, build a HashMap<Integer, Integer> to count occurrences of each element and print key-value pairs.",
+        "samples": "Sample 1:\nInput: arr = [1, 2, 2, 3, 3, 3]\nOutput: 1->1, 2->2, 3->3\nExplanation: 1 appears once, 2 appears twice, 3 appears three times.\n\nSample 2:\nInput: arr = [7, 7, 7]\nOutput: 7->3\nExplanation: Single distinct key 7 with frequency 3."
       },
       {
-        title: "Happy Number",
-        difficulty: "Easy",
-        type: "link",
-        slug: "happy-number"
+        "title": "Check Membership with HashSet",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an array A and queries Q, add elements of A to a HashSet<Integer>. For each query in Q, print true if it exists in the set, else false.",
+        "samples": "Sample 1:\nInput: A = [10, 20, 30], Q = [20, 50]\nOutput: true false\nExplanation: 20 is in set, 50 is not.\n\nSample 2:\nInput: A = [5], Q = [5, 0]\nOutput: true false\nExplanation: 5 exists, 0 does not."
       },
       {
-        title: "Word Pattern",
-        difficulty: "Easy",
-        type: "link",
-        slug: "word-pattern"
+        "title": "Count Distinct Elements",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr, return the number of unique/distinct elements using a HashSet.",
+        "samples": "Sample 1:\nInput: arr = [1, 2, 2, 3, 4, 4]\nOutput: 4\nExplanation: Unique elements are {1, 2, 3, 4}.\n\nSample 2:\nInput: arr = [9, 9, 9, 9]\nOutput: 1\nExplanation: Only one unique element 9."
       },
       {
-        title: "Jewels and Stones",
-        difficulty: "Easy",
-        type: "link",
-        slug: "jewels-and-stones"
+        "title": "First Non-Repeating Element",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr, find the first element (from left to right) that occurs exactly once. Return -1 if no such element exists.",
+        "samples": "Sample 1:\nInput: arr = [4, 5, 4, 6, 5]\nOutput: 6\nExplanation: 4 and 5 repeat. 6 is the first element with count 1.\n\nSample 2:\nInput: arr = [1, 1, 2, 2]\nOutput: -1\nExplanation: All elements repeat."
       }
     ]
   },
   {
-    section: "Sliding Window + Binary Search",
-    startDay: 25,
-    prerequisiteNote: "Sliding window and binary search both depend on precise index control. Practise moving left/right pointers and thinking in terms of search spaces before touching the real problems.",
-    videoSearchQuery: "Sliding Window Binary Search DSA hinglish",
-    questions: [
+    "section": "Sliding Window + Binary Search",
+    "startDay": 25,
+    "prerequisiteNote": "Sliding window and binary search both depend on precise index control. Practise moving left/right pointers and narrowing search spaces before tackling real problems.",
+    "videoSearchQuery": "Sliding Window Binary Search DSA hinglish",
+    "questions": [
       {
-        title: "Max sum subarray of size K",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given an array and integer K, return the maximum sum of any contiguous subarray of exactly K elements.",
-        samples: "Input: [2,1,5,1,3,2], K=3 → Output: 9"
+        "title": "Guess Number Higher or Lower",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "guess-number-higher-or-lower"
       },
       {
-        title: "Count elements less than target",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return the count of elements in a sorted array that are strictly less than the given target (no binary search — just loop first).",
-        samples: "Input: [1,2,3,4,5], target=4 → Output: 3"
+        "title": "Count Negative Numbers in a Sorted Matrix",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "count-negative-numbers-in-a-sorted-matrix"
       },
       {
-        title: "Binary search on a sorted array",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Implement binary search manually. Return the index of target or -1.",
-        samples: "Input: [1,3,5,7,9], target=7 → Output: 3\nInput: target=4 → Output: -1"
+        "title": "Find N Unique Integers Sum up to Zero",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "find-n-unique-integers-sum-up-to-zero"
       },
       {
-        title: "Find left boundary index",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "In a sorted array with possible duplicates, return the first index where arr[i] == target, or -1.",
-        samples: "Input: [1,2,2,2,3], target=2 → Output: 1"
+        "title": "Minimum Recolors to Get K Consecutive Black Blocks",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "minimum-recolors-to-get-k-consecutive-black-blocks"
       },
       {
-        title: "Sliding window: average of K",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Compute and print the average of every contiguous subarray of size K.",
-        samples: "Input: [1,2,3,4,5], K=2 → Output: 1.5 2.5 3.5 4.5"
+        "title": "Max Sum Subarray of Size K",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr and window size K, return the maximum sum among all contiguous subarrays of size K using fixed sliding window.",
+        "samples": "Sample 1:\nInput: arr = [2, 1, 5, 1, 3, 2], K = 3\nOutput: 9\nExplanation: Subarray [5, 1, 3] gives max sum 9.\n\nSample 2:\nInput: arr = [1, 4, 2, 10, 23, 3, 1, 0, 20], K = 4\nOutput: 39\nExplanation: Subarray [4, 2, 10, 23] gives max sum 39."
       },
       {
-        title: "Two pointer: pair sum in sorted array",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given a sorted array and target, return true if any two distinct elements sum to target.",
-        samples: "Input: [1,2,3,4,6], target=6 → true\nInput: target=11 → false"
+        "title": "Manual Binary Search Implementation",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a 0-indexed sorted array arr and target T, implement binary search to return the index of T. Return -1 if T is not present.",
+        "samples": "Sample 1:\nInput: arr = [1, 3, 5, 7, 9], T = 7\nOutput: 3\nExplanation: 7 is at index 3.\n\nSample 2:\nInput: arr = [2, 4, 6, 8], T = 5\nOutput: -1\nExplanation: 5 is not found."
       },
       {
-        title: "Guess Number Higher or Lower",
-        difficulty: "Easy",
-        type: "link",
-        slug: "guess-number-higher-or-lower"
+        "title": "Count Elements Less Than Target",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a sorted integer array arr and value T, count how many elements are strictly less than T using binary search boundary check.",
+        "samples": "Sample 1:\nInput: arr = [1, 2, 4, 4, 6], T = 4\nOutput: 2\nExplanation: Elements strictly less than 4 are 1 and 2 (count 2).\n\nSample 2:\nInput: arr = [5, 10, 15], T = 5\nOutput: 0\nExplanation: No elements are strictly less than 5."
       },
       {
-        title: "Count Negative Numbers in a Sorted Matrix",
-        difficulty: "Easy",
-        type: "link",
-        slug: "count-negative-numbers-in-a-sorted-matrix"
+        "title": "Sliding Window Averages",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr and integer K, calculate and print the average of every contiguous subarray of size K.",
+        "samples": "Sample 1:\nInput: arr = [1, 3, 2, 6, -1, 4, 1, 8, 2], K = 5\nOutput: 2.2 2.8 2.4 3.6\nExplanation: Averages of 5-sized windows.\n\nSample 2:\nInput: arr = [2, 4, 6], K = 2\nOutput: 3.0 5.0\nExplanation: Windows [2,4] avg=3.0, [4,6] avg=5.0."
       },
       {
-        title: "Find N Unique Integers Sum up to Zero",
-        difficulty: "Easy",
-        type: "link",
-        slug: "find-n-unique-integers-sum-up-to-zero"
+        "title": "Pair Sum in Sorted Array (Two Pointers)",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a sorted integer array arr and target sum T, check if there exist two distinct indices i and j such that arr[i] + arr[j] == T using two pointers.",
+        "samples": "Sample 1:\nInput: arr = [1, 2, 3, 4, 6], T = 6\nOutput: true\nExplanation: arr[1] + arr[3] = 2 + 4 = 6.\n\nSample 2:\nInput: arr = [1, 2, 3], T = 10\nOutput: false\nExplanation: Maximum possible pair sum is 2 + 3 = 5."
       }
     ]
   },
   {
-    section: "Recursion + Sorting + Bits",
-    startDay: 31,
-    prerequisiteNote: "Recursion needs a base case and a recursive call that shrinks the problem. Sorting and bit tricks build on that foundation — get comfortable with the call stack and with binary representations first.",
-    videoSearchQuery: "Recursion Sorting Bit Manipulation DSA hinglish",
-    questions: [
+    "section": "Recursion + Sorting + Bits",
+    "startDay": 31,
+    "prerequisiteNote": "Recursion needs a base case and a shrinking step. Sorting and bit tricks build on call-stack understanding and binary representations.",
+    "videoSearchQuery": "Recursion Sorting Bit Manipulation DSA hinglish",
+    "questions": [
       {
-        title: "Recursive sum of 1 to N",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Write a recursive method that returns 1+2+…+N. Base case: N==0 returns 0.",
-        samples: "Input: 5 → Output: 15"
+        "title": "Find the Difference",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "find-the-difference"
       },
       {
-        title: "Recursive fibonacci",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Return the N-th Fibonacci number using plain recursion (F(0)=0, F(1)=1).",
-        samples: "Input: 6 → Output: 8"
+        "title": "Sort Array By Parity II",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "sort-array-by-parity-ii"
       },
       {
-        title: "Check even/odd with bitwise AND",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Without using % or /, check if N is even or odd using the & operator.",
-        samples: "Input: 4 → Even\nInput: 7 → Odd"
+        "title": "Sum of All Subset XOR Totals",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "sum-of-all-subset-xor-totals"
       },
       {
-        title: "Count set bits (naive)",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Count how many 1-bits are in the binary representation of N using a loop and right shift.",
-        samples: "Input: 13 (=1101) → Output: 3"
+        "title": "Binary Number with Alternating Bits",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "binary-number-with-alternating-bits"
       },
       {
-        title: "Bubble sort one pass",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Write a single pass of bubble sort on an array, then print the partially sorted array.",
-        samples: "Input: [5,3,1,4] → Output: [3,1,4,5]"
+        "title": "Recursive Sum 1 to N",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Write a recursive method sum(N) that computes 1 + 2 + ... + N. Base case: if N <= 0 return 0.",
+        "samples": "Sample 1:\nInput: N = 5\nOutput: 15\nExplanation: 5 + sum(4) = 5 + 4 + 3 + 2 + 1 = 15.\n\nSample 2:\nInput: N = 1\nOutput: 1\nExplanation: Base case step returns 1."
       },
       {
-        title: "Selection sort",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Implement selection sort fully and print the sorted array.",
-        samples: "Input: [64,25,12,22,11] → Output: [11,12,22,25,64]"
+        "title": "Recursive Fibonacci",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Write a recursive method fib(N) that returns the N-th Fibonacci number where fib(0) = 0 and fib(1) = 1.",
+        "samples": "Sample 1:\nInput: N = 6\nOutput: 8\nExplanation: Sequence: 0, 1, 1, 2, 3, 5, 8.\n\nSample 2:\nInput: N = 3\nOutput: 2\nExplanation: fib(3) = fib(2) + fib(1) = 1 + 1 = 2."
       },
       {
-        title: "XOR Operation in an Array",
-        difficulty: "Easy",
-        type: "link",
-        slug: "xor-operation-in-an-array"
+        "title": "Check Even/Odd using Bitwise AND",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer N, check if it is even or odd using the bitwise AND (& 1) operator instead of modulo (%).",
+        "samples": "Sample 1:\nInput: N = 12\nOutput: Even\nExplanation: (12 & 1) == 0, so 12 is even.\n\nSample 2:\nInput: N = 9\nOutput: Odd\nExplanation: (9 & 1) == 1, so 9 is odd."
       },
       {
-        title: "Find the Difference",
-        difficulty: "Easy",
-        type: "link",
-        slug: "find-the-difference"
+        "title": "Selection Sort Step-by-Step",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr, implement Selection Sort by repeatedly finding the minimum element from the unsorted part and swapping it into place.",
+        "samples": "Sample 1:\nInput: arr = [64, 25, 12, 22, 11]\nOutput: [11, 12, 22, 25, 64]\nExplanation: Sorted in ascending order after 4 passes.\n\nSample 2:\nInput: arr = [5, 1, 4, 2, 8]\nOutput: [1, 2, 4, 5, 8]\nExplanation: Fully sorted array."
       },
       {
-        title: "Sort Array by Parity",
-        difficulty: "Easy",
-        type: "link",
-        slug: "sort-array-by-parity"
+        "title": "Count Set Bits via Bit Shift",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a non-negative integer N, count how many bits are set to 1 in its binary representation using a loop with right bit-shift (N >>= 1).",
+        "samples": "Sample 1:\nInput: N = 13\nOutput: 3\nExplanation: 13 in binary is 1101, which contains three 1-bits.\n\nSample 2:\nInput: N = 8\nOutput: 1\nExplanation: 8 in binary is 1000, which has one 1-bit."
       }
     ]
   },
   {
-    section: "Linked List + Stack + Queue",
-    startDay: 41,
-    prerequisiteNote: "Linked lists live in heap memory and require pointer chasing — not index access. Make sure you understand node references and can manually draw a 3-node chain before touching cycle or reversal problems.",
-    videoSearchQuery: "Linked List Stack Queue Java DSA hinglish",
-    questions: [
+    "section": "Linked List + Stack + Queue",
+    "startDay": 41,
+    "prerequisiteNote": "Linked lists live in memory references while Stacks (LIFO) and Queues (FIFO) govern linear state processing. Master basic pointer movement and container operations.",
+    "videoSearchQuery": "Linked List Stack Queue Java DSA hinglish",
+    "questions": [
       {
-        title: "Create and print a linked list",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Define a Node class with int val and Node next. Create a 4-node list [1→2→3→4] manually and print all values.",
-        samples: "Output: 1 2 3 4"
+        "title": "Remove Duplicates from Sorted List",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "remove-duplicates-from-sorted-list"
       },
       {
-        title: "Count nodes in a linked list",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Traverse a linked list and return its length.",
-        samples: "Input: 1→2→3 → Output: 3"
+        "title": "Remove Outermost Parentheses",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "remove-outermost-parentheses"
       },
       {
-        title: "Find the last node value",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Traverse to the end of the list and return the value of the last node.",
-        samples: "Input: 5→3→7→2 → Output: 2"
+        "title": "Backspace String Compare",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "backspace-string-compare"
       },
       {
-        title: "Stack push and pop simulation",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Using a Java Deque (as a stack), push integers 1–5, then pop and print them all. Observe LIFO order.",
-        samples: "Output: 5 4 3 2 1"
+        "title": "Baseball Game",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "baseball-game"
       },
       {
-        title: "Queue add and poll simulation",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Using a Java LinkedList (as a Queue), add integers 1–4, then poll and print them. Observe FIFO order.",
-        samples: "Output: 1 2 3 4"
+        "title": "Make The String Great",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "make-the-string-great"
       },
       {
-        title: "Check balanced parentheses",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Using a stack, check if a string containing '(' and ')' is balanced.",
-        samples: "Input: \"(())\" → true\nInput: \"(()\" → false"
+        "title": "Create and Traverse Singly Linked List",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Define a Node class (val, next). Manually create a 4-node linked list [1 -> 2 -> 3 -> 4] and traverse it to print all values.",
+        "samples": "Sample 1:\nInput: Head of [1 -> 2 -> 3 -> 4]\nOutput: 1 2 3 4\nExplanation: Traverse using curr = curr.next until null.\n\nSample 2:\nInput: Head of [10 -> 20]\nOutput: 10 20\nExplanation: Two node traversal."
       },
       {
-        title: "Linked List Cycle",
-        difficulty: "Easy",
-        type: "link",
-        slug: "linked-list-cycle"
+        "title": "Find Tail Node of Linked List",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given the head of a singly linked list, traverse to the final node and return its value. Return -1 if the list is empty.",
+        "samples": "Sample 1:\nInput: [5 -> 3 -> 7 -> 9]\nOutput: 9\nExplanation: 9 is the last node whose next pointer is null.\n\nSample 2:\nInput: [42]\nOutput: 42\nExplanation: Head is the tail."
       },
       {
-        title: "Remove Duplicates from Sorted List",
-        difficulty: "Easy",
-        type: "link",
-        slug: "remove-duplicates-from-sorted-list"
+        "title": "Stack LIFO Simulation",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Using Java Deque as a Stack, push integers 1, 2, 3, 4, 5, then pop and print each element to demonstrate Last-In-First-Out behavior.",
+        "samples": "Sample 1:\nInput: Push 1, 2, 3, 4, 5\nOutput: 5 4 3 2 1\nExplanation: Elements pop in reverse insertion order.\n\nSample 2:\nInput: Push 10, 20\nOutput: 20 10\nExplanation: 20 popped first."
       },
       {
-        title: "Implement Stack using Queues",
-        difficulty: "Easy",
-        type: "link",
-        slug: "implement-stack-using-queues"
+        "title": "Queue FIFO Simulation",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Using Java LinkedList as a Queue, enqueue integers 1, 2, 3, 4, then dequeue and print each element to demonstrate First-In-First-Out behavior.",
+        "samples": "Sample 1:\nInput: Enqueue 1, 2, 3, 4\nOutput: 1 2 3 4\nExplanation: Elements dequeue in exact insertion order.\n\nSample 2:\nInput: Enqueue 100, 200\nOutput: 100 200\nExplanation: 100 dequeued first."
       }
     ]
   },
   {
-    section: "Trees + Heaps",
-    startDay: 51,
-    prerequisiteNote: "A binary tree is a linked structure where each node has at most two children. Before you tackle tree problems, you must be able to define a TreeNode class and trace recursive calls through in-order/pre-order visits.",
-    videoSearchQuery: "Binary Tree Heap Java DSA hinglish",
-    questions: [
+    "section": "Trees + Heaps",
+    "startDay": 51,
+    "prerequisiteNote": "Binary trees use left/right pointers. Heaps preserve min/max priority orders. Master tree traversal and priority queue methods first.",
+    "videoSearchQuery": "Binary Tree Heap Java DSA hinglish",
+    "questions": [
       {
-        title: "Define TreeNode and build a small tree",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Define a TreeNode class with int val, TreeNode left, TreeNode right. Manually construct the tree: root=1, left=2, right=3. Print root.left.val.",
-        samples: "Output: 2"
+        "title": "Minimum Depth of Binary Tree",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "minimum-depth-of-binary-tree"
       },
       {
-        title: "Recursive tree height",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Write a recursive method height(node) that returns the height of a binary tree. Height of null = 0.",
-        samples: "Tree: 1→(2,3), 2→(4,null)\nOutput: 3"
+        "title": "Kth Largest Element in a Stream",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "kth-largest-element-in-a-stream"
       },
       {
-        title: "Count total nodes",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Recursively count all nodes in a binary tree.",
-        samples: "Input: tree with 5 nodes → Output: 5"
+        "title": "Leaf-Similar Trees",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "leaf-similar-trees"
       },
       {
-        title: "Sum of all node values",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Recursively return the sum of all node values in a binary tree.",
-        samples: "Tree: 1→(2,3) → Output: 6"
+        "title": "Univalued Binary Tree",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "univalued-binary-tree"
       },
       {
-        title: "Max-heap with PriorityQueue",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Add [5,1,9,3,7] to a max-heap (use Collections.reverseOrder()). Poll and print all elements in descending order.",
-        samples: "Output: 9 7 5 3 1"
+        "title": "Define TreeNode and Build Tree",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Define a TreeNode class (val, left, right). Construct a binary tree where root=1, root.left=2, root.right=3, and print root.left.val and root.right.val.",
+        "samples": "Sample 1:\nInput: Construct root 1 with children 2 and 3\nOutput: Left = 2, Right = 3\nExplanation: Node 1 points to 2 (left) and 3 (right).\n\nSample 2:\nInput: Construct root 5 with left child 10\nOutput: Left = 10, Right = null\nExplanation: Right child is null."
       },
       {
-        title: "Min-heap K smallest elements",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Add an array of integers to a min-heap PriorityQueue. Poll K times and collect the K smallest elements.",
-        samples: "Input: [5,1,9,3,7], K=3 → Output: [1,3,5]"
+        "title": "Recursive Total Node Count",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given the root of a binary tree, write a recursive function countNodes(root) that returns the total count of nodes in the tree.",
+        "samples": "Sample 1:\nInput: Tree [1, 2, 3, 4, 5]\nOutput: 5\nExplanation: Total 5 nodes present in the tree.\n\nSample 2:\nInput: Tree [10]\nOutput: 1\nExplanation: Single node tree."
       },
       {
-        title: "Minimum Depth of Binary Tree",
-        difficulty: "Easy",
-        type: "link",
-        slug: "minimum-depth-of-binary-tree"
+        "title": "Sum of Node Values in Tree",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given the root of a binary tree, recursively calculate and return the sum of all node values.",
+        "samples": "Sample 1:\nInput: Tree with nodes 1, 2, 3\nOutput: 6\nExplanation: 1 + 2 + 3 = 6.\n\nSample 2:\nInput: Tree with nodes 10, 20, 30\nOutput: 60\nExplanation: 10 + 20 + 30 = 60."
       },
       {
-        title: "Count Good Nodes in Binary Tree",
-        difficulty: "Medium",
-        type: "link",
-        slug: "count-good-nodes-in-binary-tree"
+        "title": "Max-Heap PriorityQueue Operations",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Add elements [5, 1, 9, 3, 7] into a Max-Heap PriorityQueue (using Collections.reverseOrder()). Poll and print all elements in descending order.",
+        "samples": "Sample 1:\nInput: [5, 1, 9, 3, 7]\nOutput: 9 7 5 3 1\nExplanation: Max-heap always extracts maximum remaining element.\n\nSample 2:\nInput: [2, 8, 4]\nOutput: 8 4 2\nExplanation: Descending order output."
       },
       {
-        title: "Kth Largest Element in a Stream",
-        difficulty: "Easy",
-        type: "link",
-        slug: "kth-largest-element-in-a-stream"
+        "title": "Min-Heap K Smallest Elements",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr and K, insert all elements into a Min-Heap PriorityQueue, then poll K times to collect the K smallest elements.",
+        "samples": "Sample 1:\nInput: arr = [5, 1, 9, 3, 7], K = 3\nOutput: [1, 3, 5]\nExplanation: The 3 smallest elements are 1, 3, and 5.\n\nSample 2:\nInput: arr = [10, 20, 30], K = 1\nOutput: [10]\nExplanation: Smallest single element is 10."
       }
     ]
   },
   {
-    section: "Graphs + Greedy",
-    startDay: 63,
-    prerequisiteNote: "Graphs are collections of nodes connected by edges. Before you code BFS/DFS, you must be able to represent a graph as an adjacency list and think about visited arrays to avoid infinite loops.",
-    videoSearchQuery: "Graph BFS DFS Greedy DSA hinglish",
-    questions: [
+    "section": "Graphs + Greedy",
+    "startDay": 63,
+    "prerequisiteNote": "Graphs represent networks of vertices and edges. Greedy strategies make locally optimal choices at each step. Master adjacency lists and BFS/DFS traversal basics.",
+    "videoSearchQuery": "Graph BFS DFS Greedy DSA hinglish",
+    "questions": [
       {
-        title: "Build an adjacency list",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given N nodes (0-indexed) and E edges as pairs, build and print the adjacency list using ArrayList[].",
-        samples: "Input: N=4, edges=[(0,1),(1,2),(2,3)]\nOutput: 0:[1] 1:[0,2] 2:[1,3] 3:[2]"
+        "title": "Island Perimeter",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "island-perimeter"
       },
       {
-        title: "BFS traversal from source",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Implement BFS starting from node 0. Use a Queue and a visited boolean array. Print nodes in BFS order.",
-        samples: "Graph: 0-1, 0-2, 1-3\nOutput: 0 1 2 3"
+        "title": "Buy Two Chocolates",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "buy-two-chocolates"
       },
       {
-        title: "DFS traversal from source",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Implement recursive DFS from node 0 and print nodes in DFS visit order.",
-        samples: "Graph: 0-1, 0-2, 1-3\nOutput: 0 1 3 2"
+        "title": "Maximum Units on a Truck",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "maximum-units-on-a-truck"
       },
       {
-        title: "Count connected components",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "For an undirected graph, count the number of connected components using BFS/DFS.",
-        samples: "Graph: {0-1}, {2-3}, {4}\nOutput: 3"
+        "title": "Find Center of Star Graph",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "find-center-of-star-graph"
       },
       {
-        title: "Greedy: activity selection",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given N activities each with a start and end time, select the maximum number of non-overlapping activities (sort by end time, pick greedily).",
-        samples: "Input: [(1,3),(2,4),(3,5)] → Output: 2  (activities (1,3) and (3,5))"
+        "title": "Build Adjacency List",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given N vertices (0 to N-1) and an array of undirected edges, construct an adjacency list representation using List<List<Integer>> and print each node's neighbors.",
+        "samples": "Sample 1:\nInput: N = 4, edges = [[0,1], [1,2], [2,3]]\nOutput:\n0: [1]\n1: [0, 2]\n2: [1, 3]\n3: [2]\nExplanation: Node 1 connected to 0 and 2.\n\nSample 2:\nInput: N = 3, edges = [[0,1], [0,2]]\nOutput:\n0: [1, 2]\n1: [0]\n2: [0]\nExplanation: Node 0 connected to 1 and 2."
       },
       {
-        title: "Greedy: minimum coins change",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given unlimited coins of denominations [1,5,10,25] and an amount, return the minimum number of coins needed (greedy from largest).",
-        samples: "Input: 41 → Output: 4  (25+10+5+1)"
+        "title": "BFS Traversal from Source Node",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an undirected graph and a source node 0, perform Breadth-First Search (BFS) using a Queue and visited array, printing nodes in visit order.",
+        "samples": "Sample 1:\nInput: N = 4, edges = [[0,1], [0,2], [1,3]], source = 0\nOutput: 0 1 2 3\nExplanation: Level 0: 0, Level 1: 1,2, Level 2: 3.\n\nSample 2:\nInput: N = 3, edges = [[0,1], [1,2]], source = 0\nOutput: 0 1 2\nExplanation: Traverses 0 -> 1 -> 2."
       },
       {
-        title: "Number of Islands",
-        difficulty: "Medium",
-        type: "link",
-        slug: "number-of-islands"
+        "title": "DFS Traversal from Source Node",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an undirected graph and source node 0, perform Depth-First Search (DFS) recursively with a visited array and print nodes in visit order.",
+        "samples": "Sample 1:\nInput: N = 4, edges = [[0,1], [0,2], [1,3]], source = 0\nOutput: 0 1 3 2\nExplanation: Explores 0 -> 1 -> 3 deep first before backtracking to 2.\n\nSample 2:\nInput: N = 3, edges = [[0,1], [1,2]], source = 0\nOutput: 0 1 2\nExplanation: Explores linearly to node 2."
       },
       {
-        title: "Island Perimeter",
-        difficulty: "Easy",
-        type: "link",
-        slug: "island-perimeter"
+        "title": "Count Connected Components",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given N vertices and an edge list for an undirected graph, return the number of connected components using BFS or DFS.",
+        "samples": "Sample 1:\nInput: N = 5, edges = [[0,1], [2,3]]\nOutput: 3\nExplanation: Components are {0,1}, {2,3}, and isolated {4}.\n\nSample 2:\nInput: N = 4, edges = [[0,1], [1,2], [2,3]]\nOutput: 1\nExplanation: Entire graph is connected."
       },
       {
-        title: "Buy Two Chocolates",
-        difficulty: "Easy",
-        type: "link",
-        slug: "buy-two-chocolates"
+        "title": "Greedy Minimum Coins Change",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given unlimited coins of standard Indian denominations [1, 2, 5, 10, 20, 50, 100] and a target amount, return the minimum number of coins needed using a greedy approach.",
+        "samples": "Sample 1:\nInput: amount = 43\nOutput: 4\nExplanation: Coins used: 20 + 20 + 2 + 1 (4 coins).\n\nSample 2:\nInput: amount = 70\nOutput: 2\nExplanation: Coins used: 50 + 20 (2 coins)."
       }
     ]
   },
   {
-    section: "Dynamic Programming",
-    startDay: 73,
-    prerequisiteNote: "DP breaks a problem into overlapping sub-problems and stores their results to avoid recomputation. You must be comfortable with 1-D arrays for memoization and understand the 'choice at each step' before attempting full DP problems.",
-    videoSearchQuery: "Dynamic Programming introduction DSA hinglish",
-    questions: [
+    "section": "Dynamic Programming",
+    "startDay": 73,
+    "prerequisiteNote": "Dynamic Programming stores solutions to sub-problems to eliminate exponential redundant work. Master 1D state arrays and state transitions before tackling complex DP tables.",
+    "videoSearchQuery": "Dynamic Programming introduction DSA hinglish",
+    "questions": [
       {
-        title: "Fibonacci with memoization",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Compute F(N) using top-down DP with an int[] memo array initialized to -1. Compare how many calls you save vs plain recursion.",
-        samples: "Input: 10 → Output: 55"
+        "title": "N-th Tribonacci Number",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "n-th-tribonacci-number"
       },
       {
-        title: "Fibonacci with tabulation",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Compute F(N) using bottom-up DP: fill dp[0..N] iteratively.",
-        samples: "Input: 8 → Output: 21"
+        "title": "Divisor Game",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "divisor-game"
       },
       {
-        title: "Count ways to climb N stairs (1 or 2 steps)",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Using tabulation, count the number of distinct ways to climb N stairs taking 1 or 2 steps at a time.",
-        samples: "Input: 4 → Output: 5"
+        "title": "Get Maximum in Generated Array",
+        "difficulty": "Easy",
+        "type": "link",
+        "slug": "get-maximum-in-generated-array"
       },
       {
-        title: "Min cost to reach end of array",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Given a cost[] array, you can jump 1 or 2 steps. dp[i] = cost[i] + min(dp[i-1], dp[i-2]). Return min(dp[n-1], dp[n-2]).",
-        samples: "Input: [1,100,1,1,1,100,1,1,100,1] → Output: 6"
+        "title": "Fibonacci with Top-Down Memoization",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Implement fibonacci(N) using top-down DP with an integer memo array initialized to -1. Return F(N).",
+        "samples": "Sample 1:\nInput: N = 10\nOutput: 55\nExplanation: Memoization avoids exponential recursive calls by caching subproblems.\n\nSample 2:\nInput: N = 5\nOutput: 5\nExplanation: Sequence: F(5) = F(4) + F(3) = 3 + 2 = 5."
       },
       {
-        title: "Max subarray sum (DP version of Kadane)",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "Use a 1-D DP where dp[i] = max element ending at i. Return the global max.",
-        samples: "Input: [-2,1,-3,4,-1,2,1,-5,4] → Output: 6"
+        "title": "Fibonacci with Bottom-Up Tabulation",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Implement fibonacci(N) using bottom-up DP. Fill dp[0..N] iteratively where dp[i] = dp[i-1] + dp[i-2].",
+        "samples": "Sample 1:\nInput: N = 8\nOutput: 21\nExplanation: Iteratively computes dp values up to index 8.\n\nSample 2:\nInput: N = 1\nOutput: 1\nExplanation: dp[1] = 1."
       },
       {
-        title: "Count paths in a grid (no obstacles)",
-        difficulty: "Easy",
-        type: "practice",
-        statement: "In an M×N grid, count paths from top-left to bottom-right moving only right or down. Fill a 2-D dp table.",
-        samples: "Input: M=3, N=3 → Output: 6"
+        "title": "Count Ways to Climb N Stairs",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given N stairs, you can climb 1 or 2 stairs at a time. Return the total distinct ways to reach the top using DP tabulation.",
+        "samples": "Sample 1:\nInput: N = 4\nOutput: 5\nExplanation: Ways: (1+1+1+1), (1+1+2), (1+2+1), (2+1+1), (2+2).\n\nSample 2:\nInput: N = 3\nOutput: 3\nExplanation: Ways: (1+1+1), (1+2), (2+1)."
       },
       {
-        title: "Nth Tribonacci Number",
-        difficulty: "Easy",
-        type: "link",
-        slug: "n-th-tribonacci-number"
+        "title": "Min Cost Path in 1D Array",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given a cost array cost[], you start at index 0 or 1. From index i, you can jump to i+1 or i+2. Return the minimum total cost to reach past the end of the array.",
+        "samples": "Sample 1:\nInput: cost = [10, 15, 20]\nOutput: 15\nExplanation: Start at index 1 (cost 15), jump 2 steps to reach top.\n\nSample 2:\nInput: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]\nOutput: 6\nExplanation: Pay 1s and skip 100s."
       },
       {
-        title: "Pascal's Triangle",
-        difficulty: "Easy",
-        type: "link",
-        slug: "pascals-triangle"
+        "title": "Max Subarray Sum (DP Kadane)",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an integer array arr, find the contiguous subarray with the largest sum using DP: dp[i] = max(arr[i], arr[i] + dp[i-1]). Return the maximum sum.",
+        "samples": "Sample 1:\nInput: arr = [-2, 1, -3, 4, -1, 2, 1, -5, 4]\nOutput: 6\nExplanation: Subarray [4, -1, 2, 1] has max sum 6.\n\nSample 2:\nInput: arr = [1]\nOutput: 1\nExplanation: Single element array."
       },
       {
-        title: "Unique Paths II",
-        difficulty: "Medium",
-        type: "link",
-        slug: "unique-paths-ii"
+        "title": "Grid Paths Count (2D DP)",
+        "difficulty": "Easy",
+        "type": "practice",
+        "statement": "Given an M x N grid, count total paths from top-left (0,0) to bottom-right (M-1,N-1) moving only right or down using a 2D DP table.",
+        "samples": "Sample 1:\nInput: M = 3, N = 3\nOutput: 6\nExplanation: dp[r][c] = dp[r-1][c] + dp[r][c-1].\n\nSample 2:\nInput: M = 2, N = 2\nOutput: 2\nExplanation: 2 unique paths (Right-Down, Down-Right)."
       }
     ]
   }
