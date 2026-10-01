@@ -646,6 +646,161 @@
         margin-top: 6px;
       }
     }
+
+    /* ===== FOUNDATION BLOCKS ===== */
+    .foundation-block {
+      background: linear-gradient(135deg, rgba(129,140,248,0.07) 0%, rgba(56,189,248,0.07) 100%);
+      border: 1px solid rgba(129,140,248,0.35);
+      border-radius: 14px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .foundation-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 18px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .foundation-header:hover { background: rgba(129,140,248,0.06); }
+    .foundation-title-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .foundation-label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #818cf8;
+    }
+    .foundation-chip {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(129,140,248,0.15);
+      color: #818cf8;
+      border: 1px solid rgba(129,140,248,0.3);
+    }
+    .foundation-chip.complete {
+      background: var(--accent-success-bg);
+      color: var(--accent-success);
+      border-color: rgba(34,197,94,0.3);
+    }
+    .foundation-toggle-icon {
+      font-size: 0.85rem;
+      color: #818cf8;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .foundation-toggle-icon.open { transform: rotate(180deg); }
+    .foundation-body {
+      display: none;
+      padding: 0 18px 16px 18px;
+      border-top: 1px dashed rgba(129,140,248,0.25);
+    }
+    .foundation-body.open { display: block; }
+    .foundation-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 12px 0 10px 0;
+      line-height: 1.55;
+      padding: 8px 12px;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      border-left: 3px solid #818cf8;
+    }
+    .foundation-video-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #818cf8;
+      text-decoration: none;
+      margin-bottom: 14px;
+    }
+    .foundation-video-link:hover { text-decoration: underline; }
+    .foundation-questions { display: flex; flex-direction: column; gap: 8px; }
+    .foundation-question-row {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 9px;
+      padding: 10px 14px;
+      transition: background-color 0.2s ease;
+    }
+    .foundation-question-row.solved {
+      background: rgba(34,197,94,0.04);
+      border-color: rgba(34,197,94,0.2);
+    }
+    .foundation-question-main {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .foundation-question-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 240px;
+    }
+    .foundation-question-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      flex: 1;
+    }
+    .foundation-question-row.solved .foundation-question-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+    .foundation-question-right {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+    }
+    .practice-statement {
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-color);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: none;
+    }
+    .practice-statement.open { display: block; }
+    .practice-statement pre {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      background: var(--bg-secondary);
+      padding: 6px 10px;
+      border-radius: 6px;
+      margin-top: 6px;
+      white-space: pre-wrap;
+    }
+    .foundation-notes-container {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-color);
+      display: none;
+    }
+    .foundation-notes-container.active { display: block; }
+    .foundation-dashboard-line {
+      font-size: 0.8rem;
+      color: #818cf8;
+      margin-top: 8px;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -733,6 +888,7 @@
           <strong id="hardSolvedCount">0 / 27</strong>
         </div>
       </div>
+      <div class="foundation-dashboard-line" id="foundationDashLine">🧱 Foundation practice: 0 / 0 done</div>
     </div>
   </div>
 
@@ -3418,7 +3574,7 @@ function renderDashboard() {
 }
 
 // RENDER DAY CARDS
-function renderDays() {
+function _renderDaysCore() {
   const container = document.getElementById('daysList');
   const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
   const diffVal = document.getElementById('difficultyFilter').value;
@@ -3718,6 +3874,997 @@ function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }
+
+// ============================================================
+// FOUNDATION DATA
+// ============================================================
+const FOUNDATION = [
+  {
+    section: "Java Refresher",
+    startDay: 1,
+    prerequisiteNote: "Before diving into DSA, make sure you can write Java methods, use loops, and understand how arrays are declared. These micro-drills cement your Java syntax muscle memory.",
+    videoSearchQuery: "Java basics DSA hinglish",
+    questions: [
+      {
+        title: "Print numbers 1 to N",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Write a method that prints all integers from 1 to N (inclusive).",
+        samples: "Input: N=5\nOutput: 1 2 3 4 5"
+      },
+      {
+        title: "Even or Odd",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given an integer N, print 'Even' if it is even, else print 'Odd'.",
+        samples: "Input: 4 → Output: Even\nInput: 7 → Output: Odd"
+      },
+      {
+        title: "Sum of 1 to N",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Compute the sum of all integers from 1 to N using a loop.",
+        samples: "Input: N=5\nOutput: 15"
+      },
+      {
+        title: "Factorial of N",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return N! (factorial). Assume N ≥ 0. Return 1 for N=0.",
+        samples: "Input: 5 → Output: 120\nInput: 0 → Output: 1"
+      },
+      {
+        title: "Count digits in a number",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given a positive integer N, count how many digits it has without converting to String.",
+        samples: "Input: 1234 → Output: 4\nInput: 7 → Output: 1"
+      },
+      {
+        title: "Multiplication table",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Print the multiplication table of N up to 10 rows (e.g., N×1, N×2, … N×10).",
+        samples: "Input: 3\nOutput: 3 6 9 12 15 18 21 24 27 30"
+      },
+      {
+        title: "Swap two variables",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Swap values of a and b without using a third variable. Print both after swapping.",
+        samples: "Input: a=2, b=5 → Output: a=5 b=2"
+      },
+      {
+        title: "Check prime number",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given N, return true if it is prime, false otherwise. Use a loop up to √N.",
+        samples: "Input: 7 → true\nInput: 9 → false"
+      },
+      {
+        title: "FizzBuzz",
+        difficulty: "Easy",
+        type: "link",
+        slug: "fizz-buzz"
+      }
+    ]
+  },
+  {
+    section: "Arrays",
+    startDay: 8,
+    prerequisiteNote: "Arrays start here! You need to be comfortable with index-based loops, swapping elements, and accumulating a running value before tackling real array problems.",
+    videoSearchQuery: "Arrays introduction DSA hinglish",
+    questions: [
+      {
+        title: "Traverse and print array",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given an integer array, print all elements separated by spaces.",
+        samples: "Input: [3,1,4,1,5]\nOutput: 3 1 4 1 5"
+      },
+      {
+        title: "Sum of array elements",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return the sum of all elements in an integer array.",
+        samples: "Input: [1,2,3,4] → Output: 10"
+      },
+      {
+        title: "Find maximum element",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return the maximum element in a non-empty integer array.",
+        samples: "Input: [3,1,7,2] → Output: 7"
+      },
+      {
+        title: "Find minimum element",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return the minimum element in a non-empty integer array.",
+        samples: "Input: [3,1,7,2] → Output: 1"
+      },
+      {
+        title: "Reverse an array",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Reverse the array in-place using two pointers and print the result.",
+        samples: "Input: [1,2,3,4,5]\nOutput: [5,4,3,2,1]"
+      },
+      {
+        title: "Count even and odd numbers",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given an integer array, print the count of even numbers and odd numbers.",
+        samples: "Input: [1,2,3,4,5]\nOutput: Even=2 Odd=3"
+      },
+      {
+        title: "Linear search",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return the first index of target in the array, or -1 if not found.",
+        samples: "Input: arr=[4,2,9,7], target=9 → Output: 2\nInput: target=5 → Output: -1"
+      },
+      {
+        title: "Check if array is sorted",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return true if the array is non-decreasingly sorted, false otherwise.",
+        samples: "Input: [1,2,3,3,5] → true\nInput: [1,3,2] → false"
+      },
+      {
+        title: "Running Sum of 1d Array",
+        difficulty: "Easy",
+        type: "link",
+        slug: "running-sum-of-1d-array"
+      }
+    ]
+  },
+  {
+    section: "Strings",
+    startDay: 15,
+    prerequisiteNote: "Strings in Java are immutable char sequences. You must be fluent with charAt(), length(), loops over characters, and building a result with StringBuilder before string problems make sense.",
+    videoSearchQuery: "Strings in Java DSA hinglish",
+    questions: [
+      {
+        title: "Print length and each character",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given a string, print its length, then print each character on a new line using charAt().",
+        samples: "Input: \"hello\"\nOutput: 5\nh e l l o"
+      },
+      {
+        title: "Reverse a string",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return the reverse of the input string (without using StringBuilder.reverse()).",
+        samples: "Input: \"abcd\" → Output: \"dcba\""
+      },
+      {
+        title: "Count vowels",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Count the number of vowels (a,e,i,o,u — both cases) in the given string.",
+        samples: "Input: \"Hello World\" → Output: 3"
+      },
+      {
+        title: "Check palindrome (simple)",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return true if the string reads the same forwards and backwards (case-sensitive, ignore spaces not required).",
+        samples: "Input: \"racecar\" → true\nInput: \"hello\" → false"
+      },
+      {
+        title: "Character frequency array",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given a lowercase string, print each character that appears in it along with its count.",
+        samples: "Input: \"aabbc\" → a:2 b:2 c:1"
+      },
+      {
+        title: "Convert to uppercase without library",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Convert all lowercase letters to uppercase by subtracting 32 from their ASCII value. Print the result.",
+        samples: "Input: \"hello\" → Output: \"HELLO\""
+      },
+      {
+        title: "Compare two strings",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Without using .equals(), compare two strings character by character. Print 'Same' or 'Different'.",
+        samples: "Input: \"abc\", \"abc\" → Same\nInput: \"abc\", \"ab\" → Different"
+      },
+      {
+        title: "Find the Index of the First Occurrence in a String",
+        difficulty: "Easy",
+        type: "link",
+        slug: "find-the-index-of-the-first-occurrence-in-a-string"
+      },
+      {
+        title: "To Lower Case",
+        difficulty: "Easy",
+        type: "link",
+        slug: "to-lower-case"
+      }
+    ]
+  },
+  {
+    section: "Hashing",
+    startDay: 21,
+    prerequisiteNote: "Hashing uses HashMap and HashSet to achieve O(1) lookups. Before you tackle hashing problems you must know how to put/get in a HashMap and add/contains in a HashSet.",
+    videoSearchQuery: "HashMap HashSet Java DSA hinglish",
+    questions: [
+      {
+        title: "Count frequency with HashMap",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given an integer array, use a HashMap to count how many times each element appears. Print each element and its count.",
+        samples: "Input: [1,2,2,3,3,3]\nOutput: 1→1, 2→2, 3→3"
+      },
+      {
+        title: "Check if element exists in HashSet",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Add all elements of array A to a HashSet. Then for each query in array B, print true/false based on membership.",
+        samples: "Input: A=[1,2,3], B=[2,5]\nOutput: true false"
+      },
+      {
+        title: "Count distinct elements",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return the number of distinct elements in the array.",
+        samples: "Input: [1,2,2,3,4,4] → Output: 4"
+      },
+      {
+        title: "First non-repeating element",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Find the first element in the array that appears exactly once. Return -1 if none.",
+        samples: "Input: [4,5,4,6] → Output: 5\nInput: [1,1,2,2] → Output: -1"
+      },
+      {
+        title: "Check if two arrays are identical sets",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return true if both arrays contain exactly the same set of distinct values (order doesn't matter).",
+        samples: "Input: [1,2,3], [3,1,2] → true\nInput: [1,2], [1,3] → false"
+      },
+      {
+        title: "Group elements by frequency bucket",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Using a HashMap, print all elements that appear more than once.",
+        samples: "Input: [1,2,2,3,3,3] → Output: 2 3"
+      },
+      {
+        title: "Happy Number",
+        difficulty: "Easy",
+        type: "link",
+        slug: "happy-number"
+      },
+      {
+        title: "Word Pattern",
+        difficulty: "Easy",
+        type: "link",
+        slug: "word-pattern"
+      },
+      {
+        title: "Jewels and Stones",
+        difficulty: "Easy",
+        type: "link",
+        slug: "jewels-and-stones"
+      }
+    ]
+  },
+  {
+    section: "Sliding Window + Binary Search",
+    startDay: 25,
+    prerequisiteNote: "Sliding window and binary search both depend on precise index control. Practise moving left/right pointers and thinking in terms of search spaces before touching the real problems.",
+    videoSearchQuery: "Sliding Window Binary Search DSA hinglish",
+    questions: [
+      {
+        title: "Max sum subarray of size K",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given an array and integer K, return the maximum sum of any contiguous subarray of exactly K elements.",
+        samples: "Input: [2,1,5,1,3,2], K=3 → Output: 9"
+      },
+      {
+        title: "Count elements less than target",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return the count of elements in a sorted array that are strictly less than the given target (no binary search — just loop first).",
+        samples: "Input: [1,2,3,4,5], target=4 → Output: 3"
+      },
+      {
+        title: "Binary search on a sorted array",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Implement binary search manually. Return the index of target or -1.",
+        samples: "Input: [1,3,5,7,9], target=7 → Output: 3\nInput: target=4 → Output: -1"
+      },
+      {
+        title: "Find left boundary index",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "In a sorted array with possible duplicates, return the first index where arr[i] == target, or -1.",
+        samples: "Input: [1,2,2,2,3], target=2 → Output: 1"
+      },
+      {
+        title: "Sliding window: average of K",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Compute and print the average of every contiguous subarray of size K.",
+        samples: "Input: [1,2,3,4,5], K=2 → Output: 1.5 2.5 3.5 4.5"
+      },
+      {
+        title: "Two pointer: pair sum in sorted array",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given a sorted array and target, return true if any two distinct elements sum to target.",
+        samples: "Input: [1,2,3,4,6], target=6 → true\nInput: target=11 → false"
+      },
+      {
+        title: "Guess Number Higher or Lower",
+        difficulty: "Easy",
+        type: "link",
+        slug: "guess-number-higher-or-lower"
+      },
+      {
+        title: "Count Negative Numbers in a Sorted Matrix",
+        difficulty: "Easy",
+        type: "link",
+        slug: "count-negative-numbers-in-a-sorted-matrix"
+      },
+      {
+        title: "Find N Unique Integers Sum up to Zero",
+        difficulty: "Easy",
+        type: "link",
+        slug: "find-n-unique-integers-sum-up-to-zero"
+      }
+    ]
+  },
+  {
+    section: "Recursion + Sorting + Bits",
+    startDay: 31,
+    prerequisiteNote: "Recursion needs a base case and a recursive call that shrinks the problem. Sorting and bit tricks build on that foundation — get comfortable with the call stack and with binary representations first.",
+    videoSearchQuery: "Recursion Sorting Bit Manipulation DSA hinglish",
+    questions: [
+      {
+        title: "Recursive sum of 1 to N",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Write a recursive method that returns 1+2+…+N. Base case: N==0 returns 0.",
+        samples: "Input: 5 → Output: 15"
+      },
+      {
+        title: "Recursive fibonacci",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Return the N-th Fibonacci number using plain recursion (F(0)=0, F(1)=1).",
+        samples: "Input: 6 → Output: 8"
+      },
+      {
+        title: "Check even/odd with bitwise AND",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Without using % or /, check if N is even or odd using the & operator.",
+        samples: "Input: 4 → Even\nInput: 7 → Odd"
+      },
+      {
+        title: "Count set bits (naive)",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Count how many 1-bits are in the binary representation of N using a loop and right shift.",
+        samples: "Input: 13 (=1101) → Output: 3"
+      },
+      {
+        title: "Bubble sort one pass",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Write a single pass of bubble sort on an array, then print the partially sorted array.",
+        samples: "Input: [5,3,1,4] → Output: [3,1,4,5]"
+      },
+      {
+        title: "Selection sort",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Implement selection sort fully and print the sorted array.",
+        samples: "Input: [64,25,12,22,11] → Output: [11,12,22,25,64]"
+      },
+      {
+        title: "XOR Operation in an Array",
+        difficulty: "Easy",
+        type: "link",
+        slug: "xor-operation-in-an-array"
+      },
+      {
+        title: "Find the Difference",
+        difficulty: "Easy",
+        type: "link",
+        slug: "find-the-difference"
+      },
+      {
+        title: "Sort Array by Parity",
+        difficulty: "Easy",
+        type: "link",
+        slug: "sort-array-by-parity"
+      }
+    ]
+  },
+  {
+    section: "Linked List + Stack + Queue",
+    startDay: 41,
+    prerequisiteNote: "Linked lists live in heap memory and require pointer chasing — not index access. Make sure you understand node references and can manually draw a 3-node chain before touching cycle or reversal problems.",
+    videoSearchQuery: "Linked List Stack Queue Java DSA hinglish",
+    questions: [
+      {
+        title: "Create and print a linked list",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Define a Node class with int val and Node next. Create a 4-node list [1→2→3→4] manually and print all values.",
+        samples: "Output: 1 2 3 4"
+      },
+      {
+        title: "Count nodes in a linked list",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Traverse a linked list and return its length.",
+        samples: "Input: 1→2→3 → Output: 3"
+      },
+      {
+        title: "Find the last node value",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Traverse to the end of the list and return the value of the last node.",
+        samples: "Input: 5→3→7→2 → Output: 2"
+      },
+      {
+        title: "Stack push and pop simulation",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Using a Java Deque (as a stack), push integers 1–5, then pop and print them all. Observe LIFO order.",
+        samples: "Output: 5 4 3 2 1"
+      },
+      {
+        title: "Queue add and poll simulation",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Using a Java LinkedList (as a Queue), add integers 1–4, then poll and print them. Observe FIFO order.",
+        samples: "Output: 1 2 3 4"
+      },
+      {
+        title: "Check balanced parentheses",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Using a stack, check if a string containing '(' and ')' is balanced.",
+        samples: "Input: \"(())\" → true\nInput: \"(()\" → false"
+      },
+      {
+        title: "Linked List Cycle",
+        difficulty: "Easy",
+        type: "link",
+        slug: "linked-list-cycle"
+      },
+      {
+        title: "Remove Duplicates from Sorted List",
+        difficulty: "Easy",
+        type: "link",
+        slug: "remove-duplicates-from-sorted-list"
+      },
+      {
+        title: "Implement Stack using Queues",
+        difficulty: "Easy",
+        type: "link",
+        slug: "implement-stack-using-queues"
+      }
+    ]
+  },
+  {
+    section: "Trees + Heaps",
+    startDay: 51,
+    prerequisiteNote: "A binary tree is a linked structure where each node has at most two children. Before you tackle tree problems, you must be able to define a TreeNode class and trace recursive calls through in-order/pre-order visits.",
+    videoSearchQuery: "Binary Tree Heap Java DSA hinglish",
+    questions: [
+      {
+        title: "Define TreeNode and build a small tree",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Define a TreeNode class with int val, TreeNode left, TreeNode right. Manually construct the tree: root=1, left=2, right=3. Print root.left.val.",
+        samples: "Output: 2"
+      },
+      {
+        title: "Recursive tree height",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Write a recursive method height(node) that returns the height of a binary tree. Height of null = 0.",
+        samples: "Tree: 1→(2,3), 2→(4,null)\nOutput: 3"
+      },
+      {
+        title: "Count total nodes",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Recursively count all nodes in a binary tree.",
+        samples: "Input: tree with 5 nodes → Output: 5"
+      },
+      {
+        title: "Sum of all node values",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Recursively return the sum of all node values in a binary tree.",
+        samples: "Tree: 1→(2,3) → Output: 6"
+      },
+      {
+        title: "Max-heap with PriorityQueue",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Add [5,1,9,3,7] to a max-heap (use Collections.reverseOrder()). Poll and print all elements in descending order.",
+        samples: "Output: 9 7 5 3 1"
+      },
+      {
+        title: "Min-heap K smallest elements",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Add an array of integers to a min-heap PriorityQueue. Poll K times and collect the K smallest elements.",
+        samples: "Input: [5,1,9,3,7], K=3 → Output: [1,3,5]"
+      },
+      {
+        title: "Minimum Depth of Binary Tree",
+        difficulty: "Easy",
+        type: "link",
+        slug: "minimum-depth-of-binary-tree"
+      },
+      {
+        title: "Count Good Nodes in Binary Tree",
+        difficulty: "Medium",
+        type: "link",
+        slug: "count-good-nodes-in-binary-tree"
+      },
+      {
+        title: "Kth Largest Element in a Stream",
+        difficulty: "Easy",
+        type: "link",
+        slug: "kth-largest-element-in-a-stream"
+      }
+    ]
+  },
+  {
+    section: "Graphs + Greedy",
+    startDay: 63,
+    prerequisiteNote: "Graphs are collections of nodes connected by edges. Before you code BFS/DFS, you must be able to represent a graph as an adjacency list and think about visited arrays to avoid infinite loops.",
+    videoSearchQuery: "Graph BFS DFS Greedy DSA hinglish",
+    questions: [
+      {
+        title: "Build an adjacency list",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given N nodes (0-indexed) and E edges as pairs, build and print the adjacency list using ArrayList[].",
+        samples: "Input: N=4, edges=[(0,1),(1,2),(2,3)]\nOutput: 0:[1] 1:[0,2] 2:[1,3] 3:[2]"
+      },
+      {
+        title: "BFS traversal from source",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Implement BFS starting from node 0. Use a Queue and a visited boolean array. Print nodes in BFS order.",
+        samples: "Graph: 0-1, 0-2, 1-3\nOutput: 0 1 2 3"
+      },
+      {
+        title: "DFS traversal from source",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Implement recursive DFS from node 0 and print nodes in DFS visit order.",
+        samples: "Graph: 0-1, 0-2, 1-3\nOutput: 0 1 3 2"
+      },
+      {
+        title: "Count connected components",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "For an undirected graph, count the number of connected components using BFS/DFS.",
+        samples: "Graph: {0-1}, {2-3}, {4}\nOutput: 3"
+      },
+      {
+        title: "Greedy: activity selection",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given N activities each with a start and end time, select the maximum number of non-overlapping activities (sort by end time, pick greedily).",
+        samples: "Input: [(1,3),(2,4),(3,5)] → Output: 2  (activities (1,3) and (3,5))"
+      },
+      {
+        title: "Greedy: minimum coins change",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given unlimited coins of denominations [1,5,10,25] and an amount, return the minimum number of coins needed (greedy from largest).",
+        samples: "Input: 41 → Output: 4  (25+10+5+1)"
+      },
+      {
+        title: "Number of Islands",
+        difficulty: "Medium",
+        type: "link",
+        slug: "number-of-islands"
+      },
+      {
+        title: "Island Perimeter",
+        difficulty: "Easy",
+        type: "link",
+        slug: "island-perimeter"
+      },
+      {
+        title: "Buy Two Chocolates",
+        difficulty: "Easy",
+        type: "link",
+        slug: "buy-two-chocolates"
+      }
+    ]
+  },
+  {
+    section: "Dynamic Programming",
+    startDay: 73,
+    prerequisiteNote: "DP breaks a problem into overlapping sub-problems and stores their results to avoid recomputation. You must be comfortable with 1-D arrays for memoization and understand the 'choice at each step' before attempting full DP problems.",
+    videoSearchQuery: "Dynamic Programming introduction DSA hinglish",
+    questions: [
+      {
+        title: "Fibonacci with memoization",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Compute F(N) using top-down DP with an int[] memo array initialized to -1. Compare how many calls you save vs plain recursion.",
+        samples: "Input: 10 → Output: 55"
+      },
+      {
+        title: "Fibonacci with tabulation",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Compute F(N) using bottom-up DP: fill dp[0..N] iteratively.",
+        samples: "Input: 8 → Output: 21"
+      },
+      {
+        title: "Count ways to climb N stairs (1 or 2 steps)",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Using tabulation, count the number of distinct ways to climb N stairs taking 1 or 2 steps at a time.",
+        samples: "Input: 4 → Output: 5"
+      },
+      {
+        title: "Min cost to reach end of array",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Given a cost[] array, you can jump 1 or 2 steps. dp[i] = cost[i] + min(dp[i-1], dp[i-2]). Return min(dp[n-1], dp[n-2]).",
+        samples: "Input: [1,100,1,1,1,100,1,1,100,1] → Output: 6"
+      },
+      {
+        title: "Max subarray sum (DP version of Kadane)",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "Use a 1-D DP where dp[i] = max element ending at i. Return the global max.",
+        samples: "Input: [-2,1,-3,4,-1,2,1,-5,4] → Output: 6"
+      },
+      {
+        title: "Count paths in a grid (no obstacles)",
+        difficulty: "Easy",
+        type: "practice",
+        statement: "In an M×N grid, count paths from top-left to bottom-right moving only right or down. Fill a 2-D dp table.",
+        samples: "Input: M=3, N=3 → Output: 6"
+      },
+      {
+        title: "Nth Tribonacci Number",
+        difficulty: "Easy",
+        type: "link",
+        slug: "n-th-tribonacci-number"
+      },
+      {
+        title: "Pascal's Triangle",
+        difficulty: "Easy",
+        type: "link",
+        slug: "pascals-triangle"
+      },
+      {
+        title: "Unique Paths II",
+        difficulty: "Medium",
+        type: "link",
+        slug: "unique-paths-ii"
+      }
+    ]
+  }
+];
+
+// ============================================================
+// FOUNDATION STORAGE
+// ============================================================
+const FOUNDATION_STORAGE_KEY = 'dsa_foundation_v1';
+
+function getInitialFoundationState() {
+  return { solved: {}, starred: {}, notes: {} };
+}
+
+function loadFoundationState() {
+  try {
+    const raw = localStorage.getItem(FOUNDATION_STORAGE_KEY);
+    if (!raw) return getInitialFoundationState();
+    return Object.assign(getInitialFoundationState(), JSON.parse(raw));
+  } catch (e) {
+    return getInitialFoundationState();
+  }
+}
+
+function saveFoundationState(state) {
+  try {
+    localStorage.setItem(FOUNDATION_STORAGE_KEY, JSON.stringify(state));
+  } catch (e) {}
+}
+
+let foundationState = loadFoundationState();
+
+// Foundation key format: "F_<sectionIndex>_<qIdx>"
+function fKey(si, qi) { return `F_${si}_${qi}`; }
+
+// ============================================================
+// FOUNDATION TOGGLE ACTIONS
+// ============================================================
+function toggleFoundationSolve(si, qi) {
+  const k = fKey(si, qi);
+  foundationState.solved[k] = !foundationState.solved[k];
+  saveFoundationState(foundationState);
+  updateFoundationChip(si);
+  updateFoundationDashLine();
+  // Re-render just the question row state in-place
+  const row = document.getElementById(`frow-${si}-${qi}`);
+  const cb = document.getElementById(`fcb-${si}-${qi}`);
+  if (row && cb) {
+    if (foundationState.solved[k]) {
+      row.classList.add('solved');
+      cb.classList.add('checked');
+      cb.innerHTML = '✓';
+    } else {
+      row.classList.remove('solved');
+      cb.classList.remove('checked');
+      cb.innerHTML = '';
+    }
+    const titleEl = row.querySelector('.foundation-question-title');
+    if (titleEl) titleEl.style.textDecoration = foundationState.solved[k] ? 'line-through' : '';
+  }
+}
+
+function toggleFoundationStar(si, qi) {
+  const k = fKey(si, qi);
+  foundationState.starred[k] = !foundationState.starred[k];
+  saveFoundationState(foundationState);
+  const btn = document.getElementById(`fstar-${si}-${qi}`);
+  if (btn) {
+    btn.innerHTML = foundationState.starred[k] ? '⭐' : '☆';
+    btn.classList.toggle('starred', foundationState.starred[k]);
+  }
+}
+
+function updateFoundationNote(k, val) {
+  foundationState.notes[k] = val;
+  saveFoundationState(foundationState);
+}
+
+function toggleFoundationNotes(id, k) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('active');
+}
+
+function togglePracticeStatement(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+
+function toggleFoundationBlock(bodyId, iconId) {
+  const body = document.getElementById(bodyId);
+  const icon = document.getElementById(iconId);
+  if (body) body.classList.toggle('open');
+  if (icon) icon.classList.toggle('open');
+}
+
+// Update just the chip text for a section
+function updateFoundationChip(si) {
+  const sec = FOUNDATION[si];
+  if (!sec) return;
+  const total = sec.questions.length;
+  let done = 0;
+  sec.questions.forEach((_, qi) => { if (foundationState.solved[fKey(si, qi)]) done++; });
+  const chip = document.getElementById(`fchip-${si}`);
+  if (chip) {
+    chip.textContent = `${done}/${total} done`;
+    chip.className = 'foundation-chip' + (done === total ? ' complete' : '');
+  }
+  // Also update header label
+  const lbl = document.getElementById(`flabel-${si}`);
+  if (lbl) lbl.textContent = `🧱 Foundation: ${sec.section} (${done}/${total} done)`;
+}
+
+function updateFoundationDashLine() {
+  let total = 0, done = 0;
+  FOUNDATION.forEach((sec, si) => {
+    total += sec.questions.length;
+    sec.questions.forEach((_, qi) => { if (foundationState.solved[fKey(si, qi)]) done++; });
+  });
+  const el = document.getElementById('foundationDashLine');
+  if (el) el.textContent = `🧱 Foundation practice: ${done} / ${total} done`;
+}
+
+// ============================================================
+// FOUNDATION HTML RENDERING
+// ============================================================
+function buildFoundationHtml(si) {
+  const sec = FOUNDATION[si];
+  const total = sec.questions.length;
+  let done = 0;
+  sec.questions.forEach((_, qi) => { if (foundationState.solved[fKey(si, qi)]) done++; });
+
+  const bodyId = `fbody-${si}`;
+  const iconId = `ficon-${si}`;
+  const videoUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(sec.videoSearchQuery);
+
+  let questionsHtml = '';
+  sec.questions.forEach((q, qi) => {
+    const k = fKey(si, qi);
+    const isSolved = !!foundationState.solved[k];
+    const isStarred = !!foundationState.starred[k];
+    const noteVal = foundationState.notes[k] || '';
+    const noteContId = `fnotes-${si}-${qi}`;
+
+    let actionButtons = '';
+    if (q.type === 'link') {
+      const lcUrl = `https://leetcode.com/problems/${q.slug}/`;
+      const watchUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q.title + ' leetcode solution hinglish');
+      actionButtons = `
+        <a href="${lcUrl}" target="_blank" rel="noopener" class="btn btn-sm btn-primary">🧩 Solve</a>
+        <a href="${watchUrl}" target="_blank" rel="noopener" class="btn btn-sm">🎬 Watch</a>
+      `;
+    } else {
+      const stmtId = `fstmt-${si}-${qi}`;
+      const watchUrl = 'https://www.youtube.com/results?search_query=' + encodeURIComponent(q.title + ' DSA hinglish');
+      actionButtons = `
+        <button class="btn btn-sm btn-primary" onclick="togglePracticeStatement('${stmtId}')">📋 Problem</button>
+        <a href="${watchUrl}" target="_blank" rel="noopener" class="btn btn-sm">🎬 Watch</a>
+      `;
+    }
+
+    const practiceBlock = q.type === 'practice' ? `
+      <div class="practice-statement" id="fstmt-${si}-${qi}">
+        <strong>Problem:</strong> ${escapeHtml(q.statement)}
+        <pre>${escapeHtml(q.samples)}</pre>
+      </div>
+    ` : '';
+
+    questionsHtml += `
+      <div class="foundation-question-row ${isSolved ? 'solved' : ''}" id="frow-${si}-${qi}">
+        <div class="foundation-question-main">
+          <div class="foundation-question-left">
+            <div class="custom-checkbox ${isSolved ? 'checked' : ''}" id="fcb-${si}-${qi}"
+                 onclick="toggleFoundationSolve(${si},${qi})">${isSolved ? '✓' : ''}</div>
+            <button class="star-btn ${isStarred ? 'starred' : ''}" id="fstar-${si}-${qi}"
+                    onclick="toggleFoundationStar(${si},${qi})">${isStarred ? '⭐' : '☆'}</button>
+            <span class="foundation-question-title">${escapeHtml(q.title)}</span>
+          </div>
+          <div class="foundation-question-right">
+            <span class="badge badge-${q.difficulty.toLowerCase()}">${q.difficulty}</span>
+            <span class="badge badge-platform">${q.type === 'link' ? 'LeetCode' : 'Practice'}</span>
+            ${actionButtons}
+            <button class="btn btn-sm" onclick="toggleFoundationNotes('${noteContId}','${k}')">📝 Notes</button>
+          </div>
+        </div>
+        ${practiceBlock}
+        <div class="foundation-notes-container" id="${noteContId}" ${noteVal ? 'style="display:block;"' : ''}>
+          <textarea class="notes-textarea" placeholder="Your notes..."
+            oninput="updateFoundationNote('${k}', this.value)">${escapeHtml(noteVal)}</textarea>
+        </div>
+      </div>
+    `;
+  });
+
+  return `
+    <div class="foundation-block" id="fblock-${si}">
+      <div class="foundation-header" onclick="toggleFoundationBlock('${bodyId}','${iconId}')">
+        <div class="foundation-title-area">
+          <span class="foundation-label" id="flabel-${si}">🧱 Foundation: ${escapeHtml(sec.section)} (${done}/${total} done)</span>
+          <span class="foundation-chip${done === total ? ' complete' : ''}" id="fchip-${si}">${done}/${total} done</span>
+        </div>
+        <span class="foundation-toggle-icon" id="${iconId}">▼</span>
+      </div>
+      <div class="foundation-body" id="${bodyId}">
+        <div class="foundation-note">${escapeHtml(sec.prerequisiteNote)}</div>
+        <a class="foundation-video-link" href="${videoUrl}" target="_blank" rel="noopener">
+          📹 Watch concept video: ${escapeHtml(sec.section)} DSA (Hinglish)
+        </a>
+        <div class="foundation-questions">${questionsHtml}</div>
+      </div>
+    </div>
+  `;
+}
+
+// ============================================================
+// PATCH renderDays TO INJECT FOUNDATION BLOCKS
+// ============================================================
+// We map startDay → section index
+const FOUNDATION_START_DAYS = {};
+FOUNDATION.forEach((sec, si) => { FOUNDATION_START_DAYS[sec.startDay] = si; });
+
+function renderDays() {
+  _renderDaysCore();
+  // After original rendering, inject foundation blocks before their startDay cards
+  Object.keys(FOUNDATION_START_DAYS).forEach(startDay => {
+    const si = FOUNDATION_START_DAYS[startDay];
+    const card = document.getElementById(`day-card-${startDay}`);
+    if (card) {
+      const existing = document.getElementById(`fblock-${si}`);
+      if (!existing) {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = buildFoundationHtml(si);
+        const fBlock = wrapper.firstElementChild;
+        card.parentNode.insertBefore(fBlock, card);
+      }
+    }
+  });
+  updateFoundationDashLine();
+}
+
+// ============================================================
+// PATCH Export / Import / Reset for Foundation
+// ============================================================
+// Export / Import / Reset - Foundation-aware overrides
+// ============================================================
+function exportJSON() {
+  const combined = {
+    ...appState,
+    _foundation_v1: foundationState
+  };
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(combined, null, 2));
+  const a = document.createElement('a');
+  a.setAttribute("href", dataStr);
+  a.setAttribute("download", `dsa_sprint_progress_${new Date().toISOString().split('T')[0]}.json`);
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
+function importJSON(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (imported && typeof imported === 'object') {
+        // Restore foundation state if present, else keep defaults (supports old backups)
+        if (imported._foundation_v1) {
+          foundationState = Object.assign(getInitialFoundationState(), imported._foundation_v1);
+          saveFoundationState(foundationState);
+        }
+        // Restore main state (strip foundation key)
+        const mainImport = { ...imported };
+        delete mainImport._foundation_v1;
+        appState = Object.assign(getInitialState(), mainImport);
+        saveState(appState);
+        applyTheme(appState.theme || 'dark');
+        renderDashboard();
+        renderDays();
+        alert('✅ Progress imported successfully!');
+      } else {
+        alert('❌ Invalid JSON format.');
+      }
+    } catch (err) {
+      alert('❌ Failed to parse JSON file.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+function executeReset() {
+  appState = getInitialState();
+  foundationState = getInitialFoundationState();
+  saveState(appState);
+  saveFoundationState(foundationState);
+  closeResetModal();
+  renderDashboard();
+  renderDays();
+}
+
+// Initialize foundation dashboard line on load
+document.addEventListener('DOMContentLoaded', () => {
+  updateFoundationDashLine();
+});
 </script>
 </body>
 </html>
